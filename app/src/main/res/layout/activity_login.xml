@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundlogin"
+    tools:context=".LoginActivity">
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="350dp"
+        android:src="@drawable/applogo"
+        android:id="@+id/ivloginapplogo"
+
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ivloginapplogo"
+        android:layout_marginTop="-50sp"
+        app:cardCornerRadius="5dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOG IN"
+                android:textColor="#271611"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:fontFamily="sans-serif-medium"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login to Unlock New Opportunities"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textSize="14dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number"
+                android:textColor="#565656"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16sp"
+                android:textSize="14dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etLoginNumber"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:inputType="number"
+                android:background="@drawable/edittextback"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="#565656"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textSize="14dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etLoginPassword"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:inputType="textPassword"
+                android:background="@drawable/edittextback"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="show password"
+                android:id="@+id/cbLoginShowpassword"
+                android:backgroundTint="@color/lightbrown"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:id="@+id/btnLoginButton"
+                android:background="#4CAF50"
+                android:text="LOG IN"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New User? | Click Here "
+                android:textColor="@color/lightbrown"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16sp"
+                android:id="@+id/tvLginNewUser"
+                android:textSize="14dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Log in You agree to our private policy"
+                android:textColor="#767373"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16sp"
+
+                android:textSize="12dp"
+                />
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

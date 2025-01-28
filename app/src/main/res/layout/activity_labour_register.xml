@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Your Account"
+            android:textColor="#271611"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="36dp"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif-medium"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up to begin your journey"
+            android:textColor="@color/black"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterName"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            />  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile Number"
+        android:textColor="#565656"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14sp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterMobileno"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="number"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            /> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skills"
+        android:textColor="#565656"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14sp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterSkill"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            /> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#565656"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14sp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterAddress"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            /> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        android:textColor="#565656"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14sp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterAge"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="number"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adhar Number"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14sp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterAdharnumber"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="number"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            /><TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textColor="#565656"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="14sp"
+        android:textSize="14dp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etREgisterPassword"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="textPassword"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• At least one uppercase letter (A-Z) and (a-z)"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="12dp"
+            /> <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• No space between password"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="12dp"
+        /><TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• Use special symbol or numbers(0-9)"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="12dp"
+        />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginTop="21sp"
+            android:id="@+id/btnRegisterButton"
+            android:background="#4CAF50"
+            android:text="LOG IN"
+            android:textColor="@color/white"
+            android:layout_marginBottom="100dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

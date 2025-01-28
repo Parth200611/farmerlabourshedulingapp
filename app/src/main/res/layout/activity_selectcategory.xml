@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+
+    android:background="@drawable/backgroundlogin"
+    tools:context=".selectcategory">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Your Role to Get
+         Started"
+        android:textColor="#271611"
+        android:textStyle="bold"
+        android:textSize="30dp"
+
+        android:layout_marginStart="12dp"
+        android:fontFamily="sans-serif-medium"
+
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        android:id="@+id/cvFramer"
+        android:layout_marginEnd="14dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="16sp"
+        android:layout_marginStart="14dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Farmer"
+                android:textColor="#271611"
+                android:layout_margin="12dp"
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:fontFamily="sans-serif-medium"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post and manage farming tasks, hire laborers and manage your farm."
+                android:textColor="#271611"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:textSize="16dp"
+                android:fontFamily="sans-serif-medium"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView> <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="12dp"
+    android:id="@+id/cvLabour"
+    android:layout_marginEnd="14dp"
+    android:layout_gravity="center_vertical"
+    android:layout_marginTop="16sp"
+    android:layout_marginStart="14dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Labour"
+            android:textColor="#271611"
+            android:layout_margin="12dp"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:fontFamily="sans-serif-medium"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find and apply for various farming tasks and gain experience"
+            android:textColor="#271611"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:textSize="16dp"
+            android:fontFamily="sans-serif-medium"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+</LinearLayout>
