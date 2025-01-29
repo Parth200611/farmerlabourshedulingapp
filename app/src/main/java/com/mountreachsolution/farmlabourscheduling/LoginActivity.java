@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.mountreachsolution.farmlabourscheduling.ADMIN.AdminHomepage;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.AdminRegistration;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.FarmerRegistration;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.LabourREgistration;
+import com.mountreachsolution.farmlabourscheduling.FARMER.FarmerHomepage;
+import com.mountreachsolution.farmlabourscheduling.LABOUR.LabourHomepage;
 
 public class LoginActivity extends AppCompatActivity {
 

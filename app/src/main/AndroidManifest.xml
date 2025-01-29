@@ -13,14 +13,17 @@
         android:theme="@style/Theme.FarmLabourScheduling"
         tools:targetApi="31">
         <activity
-            android:name=".AdminHomepage"
-            android:exported="false" />
+            android:name=".ADMIN.AdminHomepage"
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
-            android:name=".LabourHomepage"
-            android:exported="false" />
+            android:name=".LABOUR.LabourHomepage"
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
-            android:name=".FarmerHomepage"
-            android:exported="false" />
+            android:name=".FARMER.FarmerHomepage"
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
             android:name=".LabourRegister"
             android:exported="false" />

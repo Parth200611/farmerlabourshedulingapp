@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/adminffarmer"
+        android:title="Farmer List"
+        android:icon="@drawable/baseline_supervised_user_circle_24"
+        />
+    <item
+        android:id="@+id/adminlabour"
+        android:title="Labour List"
+        android:icon="@drawable/baseline_people_outline_24"
+        />
+    <item
+        android:id="@+id/adminprofl"
+        android:title="Profil"
+        android:icon="@drawable/baseline_person_24"
+        />
+
+</menu>
