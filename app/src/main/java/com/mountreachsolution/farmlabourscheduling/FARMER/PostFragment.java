@@ -233,6 +233,8 @@ public class PostFragment extends Fragment {
             Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
         }
     }
+
+
     // Getters for the selected values
 
 }

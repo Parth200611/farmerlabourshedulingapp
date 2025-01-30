@@ -4,11 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    \<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-
-
-
-
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -21,17 +17,20 @@
         android:theme="@style/Theme.FarmLabourScheduling"
         tools:targetApi="31">
         <activity
+            android:name=".LABOUR.WorkDetails"
+            android:exported="false" />
+        <activity
             android:name=".ADMIN.AdminHomepage"
             android:exported="false"
-            android:theme="@style/showactionbar"/>
+            android:theme="@style/showactionbar" />
         <activity
             android:name=".LABOUR.LabourHomepage"
             android:exported="false"
-            android:theme="@style/showactionbar"/>
+            android:theme="@style/showactionbar" />
         <activity
             android:name=".FARMER.FarmerHomepage"
             android:exported="false"
-            android:theme="@style/showactionbar"/>
+            android:theme="@style/showactionbar" />
         <activity
             android:name=".LabourRegister"
             android:exported="false" />

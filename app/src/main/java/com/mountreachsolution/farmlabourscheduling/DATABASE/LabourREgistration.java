@@ -123,6 +123,11 @@ public class LabourREgistration extends SQLiteOpenHelper {
         return db.rawQuery(query, new String[]{String.valueOf(id)});
     }
 
+    public Cursor getAllWorkPostings() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_USER, null);
+    }
+
 
 
 }

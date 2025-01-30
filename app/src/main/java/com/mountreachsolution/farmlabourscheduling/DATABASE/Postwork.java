@@ -2,6 +2,7 @@ package com.mountreachsolution.farmlabourscheduling.DATABASE;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -85,5 +86,9 @@ public class Postwork extends SQLiteOpenHelper {
 
         // Close the database connection
         db.close();
+    }
+    public Cursor getAllWorkPostings() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 }
