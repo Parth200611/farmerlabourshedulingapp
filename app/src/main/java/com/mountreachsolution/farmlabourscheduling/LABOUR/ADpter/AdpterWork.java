@@ -47,7 +47,7 @@ public class AdpterWork extends RecyclerView.Adapter<AdpterWork.ViewHolder> {
 
         holder.tvwork.setText(workname.get(position));
         holder.tvname.setText(name.get(position));
-        holder.tvnumber.setText(mobileno.get(position));
+//        holder.tvnumber.setText(mobileno.get(position));
         holder.tvaddress.setText(address.get(position));
         holder.tvstarttime.setText(starttime.get(position));
         holder.tvendtime.setText(endtime.get(position));
@@ -81,7 +81,6 @@ public class AdpterWork extends RecyclerView.Adapter<AdpterWork.ViewHolder> {
 
             tvwork = itemView.findViewById(R.id.tv_work_description);
             tvname = itemView.findViewById(R.id.tvname);
-            tvnumber = itemView.findViewById(R.id.tvMobileno);
             tvaddress = itemView.findViewById(R.id.tvaddress);
             tvstarttime = itemView.findViewById(R.id.tvstartTime);
             tvendtime = itemView.findViewById(R.id.tvendtime);
