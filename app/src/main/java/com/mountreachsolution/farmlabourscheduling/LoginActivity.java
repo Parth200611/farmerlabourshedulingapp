@@ -46,12 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
 
-        // Check if a user is already logged in
-        if (sharedPreferences.contains("LoggedInNumber")) {
-            navigateToHome(); // Navigate to respective homepage
-            finish();
-        }
-
         etnumber = findViewById(R.id.etLoginNumber);
         etpassword = findViewById(R.id.etLoginPassword);
         btnlogin = findViewById(R.id.btnLoginButton);
@@ -101,12 +95,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void logijn() {
+        // Check for hardcoded Admin first (optional for testing)
         if (mobileno.equals("1234567890") && password.equals("admin")) {
-            saveUserSession(mobileno);
+            saveUserSession(mobileno, "Admin");
             Intent intent = new Intent(LoginActivity.this, AdminHomepage.class);
             startActivity(intent);
             finish();
         } else {
+            // Proceed with registration-based login
             loginAdmin();
         }
     }
@@ -116,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (role != null) {
             if (role.equals("Admin")) {
-                saveUserSession(mobileno);
+                saveUserSession(mobileno, "Admin");
                 Intent intent = new Intent(LoginActivity.this, AdminHomepage.class);
                 startActivity(intent);
                 finish();
@@ -130,16 +126,10 @@ public class LoginActivity extends AppCompatActivity {
         String role = farmerRegistration.loginUser(mobileno, password);
 
         if (role != null) {
-            saveUserSession(mobileno);
-            if (role.equals("Admin")) {
-                Intent intent = new Intent(LoginActivity.this, AdminHomepage.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Intent intent = new Intent(LoginActivity.this, FarmerHomepage.class);
-                startActivity(intent);
-                finish();
-            }
+            saveUserSession(mobileno, "Farmer");
+            Intent intent = new Intent(LoginActivity.this, FarmerHomepage.class);
+            startActivity(intent);
+            finish();
         } else {
             loginLabour(); // Proceed to Labour login if Farmer login fails
         }
@@ -149,37 +139,20 @@ public class LoginActivity extends AppCompatActivity {
         String role = labourREgistration.loginUser(mobileno, password);
 
         if (role != null) {
-            saveUserSession(mobileno);
-            if (role.equals("Admin")) {
-                Intent intent = new Intent(LoginActivity.this, AdminHomepage.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Intent intent = new Intent(LoginActivity.this, LabourHomepage.class);
-                startActivity(intent);
-                finish();
-            }
+            saveUserSession(mobileno, "Labour");
+            Intent intent = new Intent(LoginActivity.this, LabourHomepage.class);
+            startActivity(intent);
+            finish();
         } else {
-            Toast.makeText(LoginActivity.this, "Invalid mobile or password in database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Invalid mobile or password", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveUserSession(String number) {
+    private void saveUserSession(String number, String role) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("LoggedInNumber", number);
+        editor.putString("LoggedInRole", role);  // Save role to help with navigation
+        editor.putBoolean("isLoggedIn", true);  // Save isLoggedIn state as true
         editor.apply();
-    }
-
-    private void navigateToHome() {
-        // Check user role from saved preferences (you can enhance this logic further if needed)
-        String savedNumber = sharedPreferences.getString("LoggedInNumber", "");
-        if (savedNumber.equals("1234567890")) {
-            Intent intent = new Intent(LoginActivity.this, AdminHomepage.class);
-            startActivity(intent);
-        } else {
-            // Default homepage for other users (you can customize this)
-            Intent intent = new Intent(LoginActivity.this, FarmerHomepage.class);
-            startActivity(intent);
-        }
     }
 }
