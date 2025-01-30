@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FARMER.PostFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+   >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POST WORK"
+            android:textSize="26dp"
+            android:textColor="@color/drown"
+            android:textStyle="bold"
+            android:layout_marginStart="16sp"
+            android:layout_marginBottom="14sp"
+            android:layout_marginTop="100dp"
+            android:id="@+id/tvnameo"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Work Name"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp" />
 
-</FrameLayout>
+        <!-- Work Name Spinner -->
+        <Spinner
+            android:id="@+id/spinnerWorkName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:background="@drawable/edittextback"
+            android:padding="12dp"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crop Name"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp" />
+
+        <!-- Crop Name Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCropName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:background="@drawable/edittextback"
+            android:padding="12dp"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Labour Required"
+        android:textColor="#565656"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14dp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etrequiredlabour"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="number"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etworkaddress"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wages"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etwages"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="number"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            />  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Time"
+        android:textColor="#565656"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16sp"
+        android:textSize="14dp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etstarrttime"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Time"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etendtime"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Working Date"
+            android:textColor="#565656"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etworkingdate"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:inputType="text"
+            android:background="@drawable/edittextback"
+            android:padding="10dp"
+            android:layout_marginTop="3dp"
+            android:focusable="false"
+        android:clickable="true" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20sp"
+            android:id="@+id/ivworkimage"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Image"
+            android:id="@+id/btnaddworkimage"
+            android:backgroundTint="@color/green"
+            android:layout_marginStart="16sp"
+            android:textColor="@color/white"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Work"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="150dp"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:id="@+id/btnPostwork"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
