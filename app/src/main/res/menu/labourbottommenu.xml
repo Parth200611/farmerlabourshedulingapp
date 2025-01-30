@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/LabourProfil"
-        android:title="Profil"
+        android:title="Profile"
         android:icon="@drawable/baseline_person_24"
         />
 
