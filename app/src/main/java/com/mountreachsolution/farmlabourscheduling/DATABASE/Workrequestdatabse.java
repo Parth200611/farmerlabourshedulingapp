@@ -96,5 +96,11 @@ public class Workrequestdatabse extends SQLiteOpenHelper {
         }
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_FARMER_MOBILE + " = ?", new String[]{number});
+    } public Cursor getRequestDEtails(String id) {
+        if (id == null || id.isEmpty()) {
+            return null; // Return null to avoid passing a null value to the query
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{id});
     }
 }
