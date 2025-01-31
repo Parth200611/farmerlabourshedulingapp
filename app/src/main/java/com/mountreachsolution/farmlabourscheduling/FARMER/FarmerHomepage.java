@@ -1,6 +1,9 @@
 package com.mountreachsolution.farmlabourscheduling.FARMER;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
@@ -45,6 +48,35 @@ public class FarmerHomepage extends AppCompatActivity implements BottomNavigatio
         } else if(item.getItemId()==R.id.FarmerProfil){
             getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayoutuserhome,profilFragment).commit();
         }
+        return true;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.farmermenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.FarmerRequest){
+            Intent i = new Intent(FarmerHomepage.this,Allrequest.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.FarmerWaiting) {
+            Intent i = new Intent(FarmerHomepage.this,waitingrequest.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.Farmerallpostwork) {
+            Intent i = new Intent(FarmerHomepage.this,AllPostwork.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.FarmerAbvoutus) {
+            Intent i = new Intent(FarmerHomepage.this, AboutUs.class);
+            startActivity(i);
+
+        }
+
         return true;
     }
 }

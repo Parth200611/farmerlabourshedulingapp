@@ -17,6 +17,21 @@
         android:theme="@style/Theme.FarmLabourScheduling"
         tools:targetApi="31">
         <activity
+            android:name=".FARMER.RequestDetails"
+            android:exported="false" />
+        <activity
+            android:name=".FARMER.AboutUs"
+            android:exported="false" />
+        <activity
+            android:name=".FARMER.AllPostwork"
+            android:exported="false" />
+        <activity
+            android:name=".FARMER.waitingrequest"
+            android:exported="false" />
+        <activity
+            android:name=".FARMER.Allrequest"
+            android:exported="false" />
+        <activity
             android:name=".LABOUR.WorkDetails"
             android:exported="false" />
         <activity

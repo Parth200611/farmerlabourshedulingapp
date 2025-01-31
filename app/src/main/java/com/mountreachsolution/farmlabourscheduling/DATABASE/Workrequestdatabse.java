@@ -2,6 +2,7 @@ package com.mountreachsolution.farmlabourscheduling.DATABASE;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -88,5 +89,12 @@ public class Workrequestdatabse extends SQLiteOpenHelper {
         values.put(COLUMN_LABOUR_AADHAR, labourAadhar);
 
         return db.insert(TABLE_NAME, null, values);
+    }
+    public Cursor getRequest(String number) {
+        if (number == null || number.isEmpty()) {
+            return null; // Return null to avoid passing a null value to the query
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_FARMER_MOBILE + " = ?", new String[]{number});
     }
 }

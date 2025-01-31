@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16sp"
+        android:layout_marginStart="16sp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/cardview2"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tv_work_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10sp"
+                android:text="Work Description"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_work_description"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp"
+                android:id="@+id/ll1"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="labourname"
+                    android:id="@+id/tvname"
+                    android:layout_marginStart="3dp"
+                    />
+
+            </LinearLayout>
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/ll1"-->
+
+            <!--                android:layout_marginStart="1dp"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_marginTop="3dp"-->
+            <!--                android:id="@+id/ll2"-->
+            <!--                >-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="MobileNo(+91):"-->
+            <!--                    />-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Namevalue"-->
+            <!--                    android:id="@+id/tvMobileno"-->
+            <!--                    android:layout_marginStart="3dp"-->
+            <!--                    />-->
+
+            <!--            </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll1"
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:id="@+id/ll3"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="labouraddress"
+                    android:id="@+id/tvaddress"
+                    android:layout_marginStart="3dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll3"
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:id="@+id/ll4"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_access_time_24"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="stratTime"
+                    android:id="@+id/tvstartTime"
+                    android:layout_marginStart="3dp"
+                    /><TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+
+                android:layout_marginStart="2dp"
+                /><TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="endtime"
+                android:id="@+id/tvendtime"
+                android:layout_marginStart="3dp"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll4"
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:id="@+id/ll5"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date"
+                    android:id="@+id/tvDate"
+                    android:layout_marginStart="3dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll5"
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:id="@+id/ll6"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="wages:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="address"
+                    android:id="@+id/tvwasgae"
+                    android:layout_marginStart="3dp"
+
+
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll6"
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:id="@+id/ll7"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crop:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="address"
+                    android:id="@+id/tvCrop"
+                    android:layout_marginStart="3dp"
+
+
+                    />
+
+            </LinearLayout> <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10sp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skill:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="address"
+                    android:id="@+id/tvskill"
+                    android:layout_marginStart="3dp"
+
+
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
