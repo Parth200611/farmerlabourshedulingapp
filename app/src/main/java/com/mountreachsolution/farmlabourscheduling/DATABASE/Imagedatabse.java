@@ -37,13 +37,27 @@ public class Imagedatabse extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertData(String number, String image) {
+    public void insertImagePath(String mobileNumber, String imagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("number", number);
-        contentValues.put("image", image);
-        db.insert("userimage", null, contentValues);
-        db.close(); // Close the database connection
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NUMBER, mobileNumber);
+        values.put(COLUMN_IMAGE, imagePath);
+
+        // Use REPLACE to update if mobile number already exists
+        db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+    }
+    public String getImagePathByMobileNumber(String mobileNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String imagePath = null;
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_NUMBER + " FROM " + TABLE_NAME +
+                " WHERE " + COLUMN_NUMBER + " = ?", new String[]{mobileNumber});
+        if (cursor.moveToFirst()) {
+            imagePath = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return imagePath;
     }
     public String getImageByNumber(String number) {
         SQLiteDatabase db = this.getReadableDatabase();

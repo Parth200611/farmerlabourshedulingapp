@@ -162,10 +162,13 @@ public class ProfilFragment extends Fragment {
             editor.putString("userName", name);
             tvMobileNo.setText(mobile);
             editor.putString("userMobile", mobile);
-            editor.apply();
             tvage.setText(age);
+            editor.putString("userAge", age);
             tvaddress.setText(address);
+            editor.putString("userAddress", address);
             tvadhareno.setText(adhar);
+            editor.putString("userAdhar", adhar);
+            editor.apply();
 
             cursor.close();
         } else {
@@ -184,7 +187,7 @@ public class ProfilFragment extends Fragment {
                 imageView.setImageURI(imageUri);
 
                 // Insert the image URI into the database
-                dbHelper.insertData(number, imageUri.toString());
+                dbHelper.insertImagePath(number, imageUri.toString());
                 Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();

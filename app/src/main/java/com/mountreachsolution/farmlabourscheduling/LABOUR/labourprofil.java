@@ -130,7 +130,7 @@ public class labourprofil extends Fragment {
                 imageView.setImageURI(imageUri);
 
                 // Insert the image URI into the database
-                dbHelper.insertData(number, imageUri.toString());
+                dbHelper.insertImagePath(number, imageUri.toString());
                 Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
@@ -169,17 +169,17 @@ public class labourprofil extends Fragment {
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
             tvname.setText(name);
-            editor.putString("userName", name);
+            editor.putString("labourName", name);
             tvMobileNo.setText(mobile);
-            editor.putString("userMobile", mobile);
+            editor.putString("labourMobile", mobile);
             tvage.setText(age);
             editor.putString("age", age);
             tvaddress.setText(address);
-            editor.putString("address", address);
+            editor.putString("labouraddress", address);
             tvadhareno.setText(adhar);
-            editor.putString("adhsr", adhar);
+            editor.putString("labouradhsr", adhar);
             tvskill.setText(skill);
-            editor.putString("skill", skill);
+            editor.putString("labourskill", skill);
             editor.apply();
 
 
