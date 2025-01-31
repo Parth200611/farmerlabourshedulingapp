@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FARMER.waitingrequest">
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waiting Requests"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="16sp"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:textColor="@color/black"
+        />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search by work,crop,wages,date"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/edittextback"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
+        android:layout_marginTop="10dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvrequestworkall"
+        android:layout_marginTop="12dp"
+        android:visibility="visible"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Request"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:textColor="#6B6B6B"
+        android:visibility="gone"
+        android:id="@+id/tvnorequest"
+        />
+
+
+
+</LinearLayout>

@@ -108,5 +108,16 @@ public class Postwork extends SQLiteOpenHelper {
 
         return null; // Return null if no image is found
     }
+    public Cursor getWorkPostingByMobile(String mobileNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NUMBER + " = ?", new String[]{mobileNumber});
+    }
+    public void deleteWorkPostingById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id});
+        db.close();
+    }
+
+
 
 }

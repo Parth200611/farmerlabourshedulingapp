@@ -153,7 +153,8 @@ public class Allrequest extends AppCompatActivity {
 
     private void getalldata(String monilenumber) {
 
-        Cursor cursor = workrequestdatabse.getRequest(monilenumber); // Change this to the actual farmer mobile number
+        Cursor cursor = workrequestdatabse.getRequest(monilenumber);
+        // Change this to the actual farmer mobile number
 
         if (cursor.getCount() == 0) {
             rvlist.setVisibility(View.GONE);

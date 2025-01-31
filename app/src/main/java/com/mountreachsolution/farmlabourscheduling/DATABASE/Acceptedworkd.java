@@ -2,6 +2,7 @@ package com.mountreachsolution.farmlabourscheduling.DATABASE;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -96,4 +97,29 @@ public class Acceptedworkd extends SQLiteOpenHelper {
         // Insert data and return the row ID of the inserted data
         return db.insert(TABLE_NAME, null, contentValues);
     }
+    public Cursor getRequest(String number) {
+        if (number == null || number.isEmpty()) {
+            return null; // Return null to avoid passing a null value to the query
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_MOBILE_NO + " = ?", new String[]{number});
+    } public Cursor getRequestLa(String number) {
+        if (number == null || number.isEmpty()) {
+            return null; // Return null to avoid passing a null value to the query
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_LABOUR_NUMBER + " = ?", new String[]{number});
+    }
+    public Cursor getRequestALL(String id) {
+        if (id == null || id.isEmpty()) {
+            return null; // Return null to avoid passing a null value to the query
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{id});
+    }
+    public int deleteDataById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id});
+    }
+
 }

@@ -5,23 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FARMER.HomeFragment">
+    android:background="@color/white"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Work Request"
+        android:text="Work Schedul"
         android:layout_marginTop="100dp"
         android:layout_marginStart="16sp"
         android:textStyle="bold"
         android:textSize="21dp"
+        android:textColor="@color/black"
         />
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search by work or location"
+        android:queryHint="Search by work,crop,wages,date"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"
@@ -33,19 +35,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/requestwork"
+        android:id="@+id/rvrequestworkall"
         android:layout_marginTop="12dp"
-        android:layout_marginStart="16sp"
-        android:layout_marginEnd="16sp"
         android:visibility="visible"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Work Request"
+        android:text="No Request"
         android:layout_gravity="center"
         android:textStyle="bold"
-        android:textSize="21dp"
+        android:textSize="40dp"
+        android:textColor="#6B6B6B"
         android:visibility="gone"
         android:id="@+id/tvnorequest"
         />

@@ -22,15 +22,13 @@ import com.mountreachsolution.farmlabourscheduling.DATABASE.Acceptedworkd;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.REjectedRequest;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.WaitingRequest;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Workrequestdatabse;
-import com.mountreachsolution.farmlabourscheduling.LABOUR.WorkDetails;
 import com.mountreachsolution.farmlabourscheduling.R;
 
-public class RequestDetails extends AppCompatActivity {
-
+public class Waitingdetails extends AppCompatActivity {
     ImageView ivimage;
 
     TextView tvname,tvaddress,tvstrat,tvend,tvdate,tvlabourrequire,tvwages,tvcrop,tvskill,tvworkbname,tvage;
-    AppCompatButton btnacfcept,btnreject,btnkeepwaiting;
+    AppCompatButton btnacfcept,btnreject;
 
     String id;
     Workrequestdatabse workrequestdatabse;
@@ -40,20 +38,20 @@ public class RequestDetails extends AppCompatActivity {
     REjectedRequest rEjectedRequest;
     WaitingRequest waitingRequest;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_request_details);
-
+        setContentView(R.layout.activity_waitingdetails);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        getWindow().setStatusBarColor(ContextCompat.getColor(RequestDetails.this,R.color.lightbrown));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(RequestDetails.this,R.color.white));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Waitingdetails.this,R.color.lightbrown));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(Waitingdetails.this,R.color.white));
         id=getIntent().getStringExtra("requestid");
-        
-        acceptedworkd=new Acceptedworkd(RequestDetails.this);
-        rEjectedRequest=new REjectedRequest(RequestDetails.this);
-        waitingRequest = new WaitingRequest(RequestDetails.this);
+
+        acceptedworkd=new Acceptedworkd(Waitingdetails.this);
+        rEjectedRequest=new REjectedRequest(Waitingdetails.this);
+        waitingRequest = new WaitingRequest(Waitingdetails.this);
 
         tvworkbname=findViewById(R.id.tvworkd);
         tvname=findViewById(R.id.tvname);
@@ -69,9 +67,6 @@ public class RequestDetails extends AppCompatActivity {
 
         btnacfcept=findViewById(R.id.btnapply);
         btnreject=findViewById(R.id.btnreject);
-        btnkeepwaiting=findViewById(R.id.btnkeppwaiting);
-        workrequestdatabse =new Workrequestdatabse(RequestDetails.this);
-
         btnacfcept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,80 +80,53 @@ public class RequestDetails extends AppCompatActivity {
                 reject(id);
             }
         });
-        btnkeepwaiting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                keppwait(id);
-            }
-        });
 
-        loaddata(id);
+        getData(id);
 
-    }
-
-    private void keppwait(String id) {
-        long answer=waitingRequest.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
-        if (answer != -1) {
-            Toast.makeText(RequestDetails.this, "Request Keep Waiting!", Toast.LENGTH_SHORT).show();
-            int deleterow = workrequestdatabse.deleteDataById(id);
-
-            // Show Toast message based on the result
-            if (deleterow > 0) {
-                Intent i = new Intent(RequestDetails.this, Allrequest.class);
-                startActivity(i);
-            } else {
-
-            }
-
-        } else {
-            // Show a failure Toast
-            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void reject(String id) {
         long answer=rEjectedRequest.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
         if (answer != -1) {
-            Toast.makeText(RequestDetails.this, "Request Rejected!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Waitingdetails.this, "Request Rejected!", Toast.LENGTH_SHORT).show();
             deteletfromworkrequest(id);
         } else {
             // Show a failure Toast
-            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Waitingdetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void Insertdata() {
         long result = acceptedworkd.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
-        
+
         if (result != -1) {
-            Toast.makeText(RequestDetails.this, "Request Accepted!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Waitingdetails.this, "Request Accepted!", Toast.LENGTH_SHORT).show();
             deteletfromworkrequest(id);
         } else {
             // Show a failure Toast
-            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Waitingdetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
         }
-        
+
     }
 
     private void deteletfromworkrequest(String id) {
-        int rowsDeleted = workrequestdatabse.deleteDataById(id);
-
-        // Show Toast message based on the result
-        if (rowsDeleted > 0) {
-           Intent i = new Intent(RequestDetails.this, FarmerHomepage.class);
+// Delete a specific record by ID
+        int deletedRows = waitingRequest.deleteAllDataById(id);
+        if (deletedRows > 0) {
+           Intent i = new Intent(Waitingdetails.this,FarmerHomepage.class);
            startActivity(i);
         } else {
-
+            Toast.makeText(Waitingdetails.this, "No record found with this ID", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void loaddata(String id) {
-        Cursor cursor = workrequestdatabse.getRequestDEtails(id);
+    private void getData(String id) {
+        Cursor cursor = waitingRequest.getRequestALL(id);
         if (cursor != null && cursor.moveToFirst()) {
-            name = cursor.getString(cursor.getColumnIndexOrThrow("farmername"));
-            mobileno = cursor.getString(cursor.getColumnIndexOrThrow("farmermobileno"));
-            address = cursor.getString(cursor.getColumnIndexOrThrow("farmeraddress"));
-            work = cursor.getString(cursor.getColumnIndexOrThrow("workname"));
+            name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            mobileno = cursor.getString(cursor.getColumnIndexOrThrow("mobileno"));
+            address = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+            work = cursor.getString(cursor.getColumnIndexOrThrow("work"));
             crop = cursor.getString(cursor.getColumnIndexOrThrow("crop"));
             wages = cursor.getString(cursor.getColumnIndexOrThrow("wages"));
             image = cursor.getString(cursor.getColumnIndexOrThrow("image"));
@@ -166,11 +134,11 @@ public class RequestDetails extends AppCompatActivity {
             endtime = cursor.getString(cursor.getColumnIndexOrThrow("endtime"));
             workdate = cursor.getString(cursor.getColumnIndexOrThrow("workdate"));
             labourname = cursor.getString(cursor.getColumnIndexOrThrow("labourname"));
-            labournumber = cursor.getString(cursor.getColumnIndexOrThrow("labourmobileno"));
+            labournumber = cursor.getString(cursor.getColumnIndexOrThrow("labournumber"));
             labouraddress = cursor.getString(cursor.getColumnIndexOrThrow("labouraddress"));
             labourskill = cursor.getString(cursor.getColumnIndexOrThrow("labourskill"));
             labourage = cursor.getString(cursor.getColumnIndexOrThrow("labourage"));
-            labouradhar = cursor.getString(cursor.getColumnIndexOrThrow("labouradhrno"));
+            labouradhar = cursor.getString(cursor.getColumnIndexOrThrow("labouradhar"));
             labour = cursor.getString(cursor.getColumnIndexOrThrow("labour"));
 
             // Log the values (Optional)
