@@ -96,5 +96,17 @@ public class Postwork extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
+    public String getImageById(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_IMAGE + " FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{id});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            String imagePath = cursor.getString(0);
+            cursor.close();
+            return imagePath; // Return the image path or URI
+        }
+
+        return null; // Return null if no image is found
+    }
 
 }
