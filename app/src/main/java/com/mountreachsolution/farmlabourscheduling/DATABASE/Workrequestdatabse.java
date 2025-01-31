@@ -103,4 +103,9 @@ public class Workrequestdatabse extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{id});
     }
+    public int deleteDataById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Use the id to delete the record from the database
+        return db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id});
+    }
 }

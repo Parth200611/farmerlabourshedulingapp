@@ -1,10 +1,13 @@
 package com.mountreachsolution.farmlabourscheduling.FARMER;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.mountreachsolution.farmlabourscheduling.DATABASE.Acceptedworkd;
+import com.mountreachsolution.farmlabourscheduling.DATABASE.REjectedRequest;
+import com.mountreachsolution.farmlabourscheduling.DATABASE.WaitingRequest;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Workrequestdatabse;
 import com.mountreachsolution.farmlabourscheduling.LABOUR.WorkDetails;
 import com.mountreachsolution.farmlabourscheduling.R;
@@ -29,6 +35,9 @@ public class RequestDetails extends AppCompatActivity {
     Workrequestdatabse workrequestdatabse;
     String id1, name, mobileno, address, work, wages, starttime, endtime, workdate, crop, image,labour;
     String labourname,labournumber,labouraddress,labourskill,labouradhar,labourage;
+    Acceptedworkd acceptedworkd;
+    REjectedRequest rEjectedRequest;
+    WaitingRequest waitingRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +49,10 @@ public class RequestDetails extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(RequestDetails.this,R.color.lightbrown));
         getWindow().setNavigationBarColor(ContextCompat.getColor(RequestDetails.this,R.color.white));
         id=getIntent().getStringExtra("requestid");
+        
+        acceptedworkd=new Acceptedworkd(RequestDetails.this);
+        rEjectedRequest=new REjectedRequest(RequestDetails.this);
+        waitingRequest = new WaitingRequest(RequestDetails.this);
 
         tvworkbname=findViewById(R.id.tvworkd);
         tvname=findViewById(R.id.tvname);
@@ -54,12 +67,88 @@ public class RequestDetails extends AppCompatActivity {
         tvage=findViewById(R.id.tvage);
 
         btnacfcept=findViewById(R.id.btnapply);
-        btnacfcept=findViewById(R.id.btnreject);
-        btnacfcept=findViewById(R.id.btnkeppwaiting);
+        btnreject=findViewById(R.id.btnreject);
+        btnkeepwaiting=findViewById(R.id.btnkeppwaiting);
         workrequestdatabse =new Workrequestdatabse(RequestDetails.this);
+
+        btnacfcept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Insertdata();
+
+            }
+        });
+        btnreject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reject(id);
+            }
+        });
+        btnkeepwaiting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                keppwait(id);
+            }
+        });
 
         loaddata(id);
 
+    }
+
+    private void keppwait(String id) {
+        long answer=waitingRequest.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
+        if (answer != -1) {
+            Toast.makeText(RequestDetails.this, "Request Keep Waiting!", Toast.LENGTH_SHORT).show();
+            int deleterow = workrequestdatabse.deleteDataById(id);
+
+            // Show Toast message based on the result
+            if (deleterow > 0) {
+                Intent i = new Intent(RequestDetails.this, Allrequest.class);
+                startActivity(i);
+            } else {
+
+            }
+
+        } else {
+            // Show a failure Toast
+            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void reject(String id) {
+        long answer=rEjectedRequest.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
+        if (answer != -1) {
+            Toast.makeText(RequestDetails.this, "Request Rejected!", Toast.LENGTH_SHORT).show();
+            deteletfromworkrequest(id);
+        } else {
+            // Show a failure Toast
+            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void Insertdata() {
+        long result = acceptedworkd.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage);
+        
+        if (result != -1) {
+            Toast.makeText(RequestDetails.this, "Request Accepted!", Toast.LENGTH_SHORT).show();
+            deteletfromworkrequest(id);
+        } else {
+            // Show a failure Toast
+            Toast.makeText(RequestDetails.this, "Data insertion failed.", Toast.LENGTH_SHORT).show();
+        }
+        
+    }
+
+    private void deteletfromworkrequest(String id) {
+        int rowsDeleted = workrequestdatabse.deleteDataById(id);
+
+        // Show Toast message based on the result
+        if (rowsDeleted > 0) {
+           Intent i = new Intent(RequestDetails.this, FarmerHomepage.class);
+           startActivity(i);
+        } else {
+
+        }
     }
 
     private void loaddata(String id) {
