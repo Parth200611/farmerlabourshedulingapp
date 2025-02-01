@@ -1,9 +1,8 @@
-package com.mountreachsolution.farmlabourscheduling.FARMER;
+package com.mountreachsolution.farmlabourscheduling.LABOUR;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,12 +19,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Acceptedworkd;
-import com.mountreachsolution.farmlabourscheduling.DATABASE.REjectedRequest;
-import com.mountreachsolution.farmlabourscheduling.DATABASE.WaitingRequest;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Workrequestdatabse;
+import com.mountreachsolution.farmlabourscheduling.FARMER.DetailsRequest;
+import com.mountreachsolution.farmlabourscheduling.FARMER.FarmerHomepage;
 import com.mountreachsolution.farmlabourscheduling.R;
 
-public class DetailsRequest extends AppCompatActivity {
+public class LabourWorksheduldetails extends AppCompatActivity {
     ImageView ivimage;
 
     TextView tvname,tvaddress,tvstrat,tvend,tvdate,tvlabourrequire,tvwages,tvcrop,tvskill,tvworkbname,tvage;
@@ -42,14 +41,13 @@ public class DetailsRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_details_request);
-
+        setContentView(R.layout.activity_labour_worksheduldetails);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        getWindow().setNavigationBarColor(ContextCompat.getColor(DetailsRequest.this,R.color.white));
-        getWindow().setStatusBarColor(ContextCompat.getColor(DetailsRequest.this,R.color.lightbrown));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(LabourWorksheduldetails.this,R.color.white));
+        getWindow().setStatusBarColor(ContextCompat.getColor(LabourWorksheduldetails.this,R.color.lightbrown));
         id=getIntent().getStringExtra("requestid");
 
-        acceptedworkd=new Acceptedworkd(DetailsRequest.this);
+        acceptedworkd=new Acceptedworkd(LabourWorksheduldetails.this);
 
         tvworkbname=findViewById(R.id.tvworkd);
         tvname=findViewById(R.id.tvname);
@@ -65,7 +63,7 @@ public class DetailsRequest extends AppCompatActivity {
 
 
         btdonewithwork=findViewById(R.id.btndonewithwork);
-        acceptedworkd =new Acceptedworkd(DetailsRequest.this);
+        acceptedworkd =new Acceptedworkd(LabourWorksheduldetails.this);
 
         btdonewithwork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +75,6 @@ public class DetailsRequest extends AppCompatActivity {
 
         loaddata(id);
 
-
     }
 
     private void deleteRequest(String id) {
@@ -85,11 +82,11 @@ public class DetailsRequest extends AppCompatActivity {
         int deletedRows = acceptedworkd.deleteDataById(id);
 
         if (deletedRows > 0) {
-            Toast.makeText(DetailsRequest.this, "Work Done!!", Toast.LENGTH_SHORT).show();
-            Intent i= new Intent(DetailsRequest.this,FarmerHomepage.class);
+            Toast.makeText(LabourWorksheduldetails.this, "Work Done!!", Toast.LENGTH_SHORT).show();
+            Intent i= new Intent(LabourWorksheduldetails.this, LabourHomepage.class);
             startActivity(i);
         } else {
-            Toast.makeText(DetailsRequest.this, "No record found with this ID", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LabourWorksheduldetails.this, "No record found with this ID", Toast.LENGTH_SHORT).show();
         }
     }
 

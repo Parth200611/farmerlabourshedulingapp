@@ -1,4 +1,4 @@
-package com.mountreachsolution.farmlabourscheduling.FARMER.Adpter;
+package com.mountreachsolution.farmlabourscheduling.LABOUR;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,17 +12,15 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mountreachsolution.farmlabourscheduling.FARMER.DetailsRequest;
-import com.mountreachsolution.farmlabourscheduling.FARMER.RequestDetails;
 import com.mountreachsolution.farmlabourscheduling.R;
 
 import java.util.ArrayList;
 
-public class Adpterallrequest extends RecyclerView.Adapter<Adpterallrequest.ViewHolder> {
+public class LabourAccept extends RecyclerView.Adapter<LabourAccept.ViewHolder> {
     ArrayList<String> id, name, mobileno, address, work, wages, starttime, endtime, workdate, crop, image,labour,labourname,labournumber,labouraddress,labourskill,labouradhar,labourage;
     Context context;
 
-
-    public Adpterallrequest(ArrayList<String> id, ArrayList<String> name, ArrayList<String> mobileno, ArrayList<String> address, ArrayList<String> work, ArrayList<String> wages, ArrayList<String> starttime, ArrayList<String> endtime, ArrayList<String> workdate, ArrayList<String> crop, ArrayList<String> image, ArrayList<String> labour, ArrayList<String> labourname, ArrayList<String> labournumber, ArrayList<String> labouraddress, ArrayList<String> labourskill, ArrayList<String> labouradhar, ArrayList<String> labourage, Context context) {
+    public LabourAccept(ArrayList<String> id, ArrayList<String> name, ArrayList<String> mobileno, ArrayList<String> address, ArrayList<String> work, ArrayList<String> wages, ArrayList<String> starttime, ArrayList<String> endtime, ArrayList<String> workdate, ArrayList<String> crop, ArrayList<String> image, ArrayList<String> labour, ArrayList<String> labourname, ArrayList<String> labournumber, ArrayList<String> labouraddress, ArrayList<String> labourskill, ArrayList<String> labouradhar, ArrayList<String> labourage, Context context) {
         this.id = id;
         this.name = name;
         this.mobileno = mobileno;
@@ -46,14 +44,13 @@ public class Adpterallrequest extends RecyclerView.Adapter<Adpterallrequest.View
 
     @NonNull
     @Override
-    public Adpterallrequest.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LabourAccept.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.requesttdesgin,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adpterallrequest.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull LabourAccept.ViewHolder holder, int position) {
         holder.tvworkname.setText(work.get(position));
         holder.tvlabourname.setText(labourname.get(position));
         holder.tvlabouraddress.setText(labouraddress.get(position));
@@ -66,7 +63,7 @@ public class Adpterallrequest extends RecyclerView.Adapter<Adpterallrequest.View
         holder.cvcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(context, DetailsRequest.class);
+                Intent i=new Intent(context, LabourWorksheduldetails.class);
                 i.putExtra("requestid", id.get(position)); // Pass the correct work ID
                 context.startActivity(i);
             }

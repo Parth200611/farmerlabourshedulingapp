@@ -23,7 +23,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search by work,crop,wages,date"
+        android:queryHint="Search by task,crop,wages,date"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"

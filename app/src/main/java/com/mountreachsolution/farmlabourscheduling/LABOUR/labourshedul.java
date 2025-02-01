@@ -32,7 +32,7 @@ public class labourshedul extends Fragment {
             labourname1, labournumber1, labouraddress1, labourskill1, labouradhar1, labourage1;
 
     String monilenumber;
-    Adpterallrequest adpterRequestWork;
+    LabourAccept adpterRequestWork;
     Acceptedworkd acceptedworkd;
 
     ArrayList<String> filteredId, filteredName, filteredMobileno, filteredAddress, filteredWork, filteredWages, filteredStarttime,
@@ -83,7 +83,7 @@ public class labourshedul extends Fragment {
         filteredWorkdate = new ArrayList<>();
         filteredCrop = new ArrayList<>();
 
-        adpterRequestWork = new Adpterallrequest(filteredId, filteredName, filteredMobileno, filteredAddress, filteredWork, filteredWages,
+        adpterRequestWork = new LabourAccept(filteredId, filteredName, filteredMobileno, filteredAddress, filteredWork, filteredWages,
                 filteredStarttime, filteredEndtime, filteredWorkdate, filteredCrop, image1, labour1,
                 labourname1, labournumber1, labouraddress1, labourskill1, labouradhar1, labourage1, getActivity());
         rvlist.setLayoutManager(new LinearLayoutManager(getActivity()));
