@@ -6,7 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,12 +23,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.mountreachsolution.farmlabourscheduling.DATABASE.LabourREgistration;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class LabourRegister extends AppCompatActivity {
     EditText etname,etmobile,etage,etadharno,etpassword,etAddress,etskills;
     ProgressDialog progressDialog;
     AppCompatButton btnRegister;
     String category;
     LabourREgistration labourREgistration;
+
 
     int agel;
 
@@ -50,7 +57,29 @@ public class LabourRegister extends AppCompatActivity {
         etage = findViewById(R.id.etREgisterAge);
         etadharno = findViewById(R.id.etREgisterAdharnumber);
         etpassword = findViewById(R.id.etREgisterPassword);
-        etskills = findViewById(R.id.etREgisterSkill);
+
+        Spinner spinnerSkill = findViewById(R.id.spinnerSkills);
+
+
+        String[] skillin = {"Harvesting", "Seeding", "Weeding", "Fertilization", "Planting", "Spraying"};
+        ArrayAdapter<String> workAdapter = new ArrayAdapter<>(LabourRegister.this, android.R.layout.simple_spinner_item, skillin);
+        workAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSkill.setAdapter(workAdapter);
+
+        spinnerSkill.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                skill= skillin[position];
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
+
+
 
         labourREgistration = new LabourREgistration(LabourRegister.this);
 

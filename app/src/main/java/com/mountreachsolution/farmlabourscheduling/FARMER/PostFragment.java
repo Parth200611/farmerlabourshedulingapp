@@ -96,7 +96,7 @@ public class PostFragment extends Fragment {
                     }
                 }, year, month, day);
 
-// Show the DatePickerDialog
+
         etworkingdate.setOnClickListener(v -> datePickerDialog.show());
 
 
@@ -106,29 +106,29 @@ public class PostFragment extends Fragment {
         Spinner spinnerWorkName = view.findViewById(R.id.spinnerWorkName);
         Spinner spinnerCropName = view.findViewById(R.id.spinnerCropName);
 
-// Work Name List
+
         String[] workNames = {"Harvesting", "Seeding", "Weeding", "Fertilization", "Planting", "Spraying"};
         ArrayAdapter<String> workAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, workNames);
         workAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerWorkName.setAdapter(workAdapter);
 
-// Crop Name List
+
         String[] cropNames = {"Gram", "Peanuts", "Wheat", "Bajra", "Onion", "Garlic", "Chillies", "Corn", "Cotton"};
         ArrayAdapter<String> cropAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, cropNames);
         cropAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCropName.setAdapter(cropAdapter);
 
-// Get selected values
+
         spinnerWorkName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                  strworkname = workNames[position];
-                // Do something with selectedWork
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing
+
             }
         });
 
@@ -136,12 +136,12 @@ public class PostFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                cropname= cropNames[position];
-                // Do something with selectedCrop
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing
+
             }
         });
 

@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundlogin"
     tools:context=".LoginActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <ImageView
         android:layout_width="800dp"
         android:layout_height="350dp"
@@ -15,7 +19,7 @@
         />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:layout_below="@+id/ivloginapplogo"
         android:layout_marginTop="-50sp"
         app:cardCornerRadius="5dp"
@@ -104,6 +108,7 @@
                 android:text="LOG IN"
                 android:textColor="@color/white"
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,10 +132,7 @@
                 android:textSize="12dp"
                 />
 
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

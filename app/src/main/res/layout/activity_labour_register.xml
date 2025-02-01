@@ -72,26 +72,29 @@
             android:background="@drawable/edittextback"
             android:padding="10dp"
             android:layout_marginTop="5dp"
-            /> <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skills"
-        android:textColor="#565656"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16sp"
-        android:textSize="14sp"
-        />
-        <EditText
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16sp"
+            android:textSize="14sp"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerSkills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etREgisterSkill"
             android:layout_marginStart="16sp"
             android:layout_marginEnd="16sp"
-            android:inputType="text"
-            android:background="@drawable/edittextback"
-            android:padding="10dp"
             android:layout_marginTop="5dp"
-            /> <TextView
+            android:background="@drawable/edittextback"
+            android:padding="12dp"
+            />
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
