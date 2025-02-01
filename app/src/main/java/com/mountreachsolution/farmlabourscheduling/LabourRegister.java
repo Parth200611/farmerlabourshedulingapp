@@ -94,9 +94,7 @@ public class LabourRegister extends AppCompatActivity {
                     etmobile.setError("Please enter the mobile number");
                 } else if (etmobile.getText().toString().length() != 10) {
                     etmobile.setError("Please enter Proper Mobile number ");
-                }else if (etskills.getText().toString().isEmpty()) {
-                    etskills.setError("Please enter Proper Mobile number ");
-                } else if (etAddress.getText().toString().isEmpty()) {
+                }else if (etAddress.getText().toString().isEmpty()) {
                     etAddress.setError("Please enter the address");
                 } else if (etage.getText().toString().isEmpty()) {
                     etage.setError("Please enter the age");
@@ -127,7 +125,7 @@ public class LabourRegister extends AppCompatActivity {
                     age = etage.getText().toString();
                     adhar = etadharno.getText().toString();
                     password = etpassword.getText().toString();
-                     skill= etskills.getText().toString();
+
 
                     age = String.valueOf(Integer.parseInt(etage.getText().toString().trim()));
 
