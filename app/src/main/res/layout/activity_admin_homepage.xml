@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".ADMIN.AdminHomepage">
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/FrameLayoutuserhome"
+        android:layout_above="@id/bottomAdmin"
+        />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:id="@+id/bottomAdmin"
+        app:menu="@menu/adminbottom"
+        android:layout_alignParentBottom="true"
+        app:itemRippleColor="@color/green"
+        app:itemIconTint="@color/drown"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        app:itemTextColor="@color/drown"
+        android:background="@color/white"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
