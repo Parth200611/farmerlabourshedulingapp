@@ -75,6 +75,11 @@ public class ProfilFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
         number = sharedPreferences.getString("LoggedInNumber", "");
 
+        sharedPreferences1 = getActivity().getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences1.edit();
+        editor.remove("image_uri_" + number); // Remove old image for this user
+        editor.apply();
+
         // Initialize views
         imageView = view.findViewById(R.id.profileImage);
         ivedit = view.findViewById(R.id.editPhotoButton);
@@ -122,25 +127,33 @@ public class ProfilFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
             if (selectedImageUri != null) {
+                // Save the image for the specific user
                 String imagePath = saveImageToInternalStorage(selectedImageUri);
                 if (imagePath != null) {
-                    SharedPreferences.Editor editor = sharedPreferences1.edit();
-                    editor.putString(IMAGE_URI_KEY, imagePath);
+                    // Save image path with the mobile number as a unique key
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserImages", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("image_uri_" + number, imagePath);  // Save image with unique key based on mobile number
                     editor.apply();
-                    loadImage();
+                    loadImage();  // Reload the image to show the newly selected image
                 } else {
                     Toast.makeText(getActivity(), "Failed to save image", Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
+
+
+
+
     private String saveImageToInternalStorage(Uri imageUri) {
         try {
             InputStream inputStream = getActivity().getContentResolver().openInputStream(imageUri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
+            // Save image to internal storage
             File directory = getActivity().getFilesDir();
-            File file = new File(directory, "profile_image.jpg");
+            File file = new File(directory, "profile_image_" + number + ".jpg");  // Unique name for each user
 
             FileOutputStream outputStream = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
@@ -148,7 +161,7 @@ public class ProfilFragment extends Fragment {
             outputStream.close();
             inputStream.close();
 
-            return file.getAbsolutePath();
+            return file.getAbsolutePath();  // Return the path to the saved image
         } catch (Exception e) {
             Log.e("ImagePicker", "Error saving image: " + e.getMessage());
             return null;
@@ -159,11 +172,13 @@ public class ProfilFragment extends Fragment {
 
 
 
+
     private void logoutUser() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("LoggedInNumber");
         editor.remove("LoggedInRole");
+        editor.remove("image_uri_" + number);  // Clear the image path for this user
         editor.apply();
 
 
@@ -211,8 +226,12 @@ public class ProfilFragment extends Fragment {
     }
 
     private void loadImage() {
-        String savedImagePath = sharedPreferences1.getString(IMAGE_URI_KEY, null);
+        // Get the saved image path for the logged-in user
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserImages", Context.MODE_PRIVATE);
+        String savedImagePath = sharedPreferences.getString("image_uri_" + number, null);
+
         if (savedImagePath != null) {
+            // Image exists, load it
             File imgFile = new File(savedImagePath);
             if (imgFile.exists()) {
                 Glide.with(this)
@@ -220,14 +239,15 @@ public class ProfilFragment extends Fragment {
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageView);
                 Log.d("ImagePicker", "Image loaded from internal storage: " + savedImagePath);
-            } else {
-                Log.e("ImagePicker", "Saved image file not found");
             }
         } else {
-            Log.d("ImagePicker", "No saved image path found in SharedPreferences");
+            // No image selected yet, set a placeholder or show nothing
+            Glide.with(this)
+                    .load(R.drawable.baseline_person_24)  // Replace with your placeholder image
+                    .into(imageView);
+            Log.d("ImagePicker", "No saved image for user " + number);
         }
     }
-
 
 
 }
