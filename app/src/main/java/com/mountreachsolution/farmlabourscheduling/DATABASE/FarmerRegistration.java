@@ -109,20 +109,25 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_ROLE + " = ?";
         return db.rawQuery(query, new String[]{role});
     }
-    public Cursor getSelectedWorkPostingsByRole(String role) {
+
+
+    public Cursor getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + COLUMN_ID + ", " + COLUMN_NAME + ", " + COLUMN_MOBILE + ", " + COLUMN_AGE + ", " + COLUMN_ADDRESS +
-                " FROM " + TABLE_USER + " WHERE " + COLUMN_ROLE + " = ?";
-        return db.rawQuery(query, new String[]{role});
+        String query = "SELECT * FROM " + TABLE_USER;
+        return db.rawQuery(query, null);
     }
+
     public Cursor getUserById(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + COLUMN_ID + ", " + COLUMN_NAME + ", " + COLUMN_MOBILE + ", " + COLUMN_AGE + ", " + COLUMN_ADDRESS +
-                " FROM " + TABLE_USER + " WHERE " + COLUMN_ID + " = ?";
-        return db.rawQuery(query, new String[]{String.valueOf(id)});
+        String query = "SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_ID + " = ?";
+        return db.rawQuery(query, new String[]{id});
     }
-
-
+    public boolean deleteUserById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_USER, COLUMN_ID + " = ?", new String[]{id});
+        db.close();
+        return result > 0; // Returns true if deletion was successful
+    }
 
 
 }

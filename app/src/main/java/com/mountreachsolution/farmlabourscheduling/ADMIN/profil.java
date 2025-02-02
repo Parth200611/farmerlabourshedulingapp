@@ -1,66 +1,59 @@
 package com.mountreachsolution.farmlabourscheduling.ADMIN;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.mountreachsolution.farmlabourscheduling.LoginActivity;
 import com.mountreachsolution.farmlabourscheduling.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link profil#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class profil extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Button btnlogout;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public profil() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment profil.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static profil newInstance(String param1, String param2) {
-        profil fragment = new profil();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profil2, container, false);
+        View view= inflater.inflate(R.layout.fragment_profil2, container, false);
+
+        btnlogout=view.findViewById(R.id.btnlogout);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
+        return view;
     }
+
+    private void logout() {
+
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("LoggedInNumber");  // Remove saved login information
+            editor.remove("LoggedInRole");  // Remove saved role information
+            editor.apply();
+
+            // Optionally, log to check if it's cleared
+            Log.d("Logout", "User logged out, session cleared");
+
+            // Redirect to the login screen
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+
 }

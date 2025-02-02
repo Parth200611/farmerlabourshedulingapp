@@ -123,10 +123,37 @@ public class LabourREgistration extends SQLiteOpenHelper {
         return db.rawQuery(query, new String[]{String.valueOf(id)});
     }
 
-    public Cursor getAllWorkPostings() {
+
+
+    public Cursor getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_USER, null);
+        String query = "SELECT * FROM " + TABLE_USER;
+        return db.rawQuery(query, null); // Don't forget to handle this properly in calling code
     }
+    public Cursor getUserDetailsByRole(String role) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_ID + ", " + COLUMN_NAME + ", " + COLUMN_MOBILE + ", " + COLUMN_ADDRESS + ", " + COLUMN_AGE + ", " + COLUMN_SKILL + ", " + COLUMN_ADHAR +
+                " FROM " + TABLE_USER + " WHERE " + COLUMN_ROLE + " = ?";
+        return db.rawQuery(query, new String[]{role});
+    }
+
+    public Cursor getUserByIddata(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_ID + ", " + COLUMN_NAME + ", " + COLUMN_MOBILE + ", " + COLUMN_ADDRESS + ", " +
+                COLUMN_SKILL + ", " + COLUMN_AGE + ", " + COLUMN_ADHAR +
+                " FROM " + TABLE_USER + " WHERE " + COLUMN_ID + " = ?";
+        return db.rawQuery(query, new String[]{id});
+    }
+
+    public boolean deleteUserById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsAffected = db.delete(TABLE_USER, COLUMN_ID + " = ?", new String[]{id}); // Delete user by ID
+
+        db.close(); // Close database after operation
+
+        return rowsAffected > 0; // Return true if a user was deleted, otherwise false
+    }
+
 
 
 
