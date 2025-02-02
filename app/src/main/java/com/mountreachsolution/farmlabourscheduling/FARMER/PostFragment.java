@@ -3,6 +3,7 @@ package com.mountreachsolution.farmlabourscheduling.FARMER;
 import static android.app.Activity.RESULT_OK;
 
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -153,15 +154,14 @@ public class PostFragment extends Fragment {
 
 
         postwork = new Postwork(getContext());
-        btnaddimage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("image/*");
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+         btnaddimage.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Opengallerey();
+             }
+         });
 
-            }
-        });
+
 
 
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -193,6 +193,12 @@ public class PostFragment extends Fragment {
         return view;
     }
 
+    private void Opengallerey() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+
     private void executePostWorkMethod() {
         postwork.insertPostwork(strname,strmobileno,straddress,strworkname,cropname,strwages,imagepath,strstartimae,strendtime,strdate,strlabour);
         Toast.makeText(getActivity(), "Work Posted", Toast.LENGTH_SHORT).show();
@@ -212,26 +218,7 @@ public class PostFragment extends Fragment {
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
-
-
-            ivwork.setImageURI(imageUri);
-
-
-            imagepath=imageUri.toString();
-
-
-            Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
 

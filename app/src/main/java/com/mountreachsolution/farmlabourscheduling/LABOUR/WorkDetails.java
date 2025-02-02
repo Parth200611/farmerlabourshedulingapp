@@ -82,24 +82,14 @@ public class WorkDetails extends AppCompatActivity {
           }
       });
 
-      loadimage(id);
+
 
         fetchWorkPostingById(id);
         //loadProfileImage();
 
     }
 
-    private void loadimage(String id) {
-         image = postwork.getImageById(id); // Fetch image for ID = 1
 
-        if (image != null) {
-            Glide.with(this)
-                    .load(image)
-                    .into(ivimage); // Load image into ImageView using Glide
-        } else {
-            ivimage.setImageResource(R.drawable.baseline_person_24); // Set a default image if no image is found
-        }
-    }
 
     private void Applyforwork() {
         long result = workrequestdatabse.insertData(name,mobileno,address,work,wages,starttime,endtime,workdate,crop,image,labour,
