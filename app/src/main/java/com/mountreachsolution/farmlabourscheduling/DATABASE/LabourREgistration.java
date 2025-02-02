@@ -76,9 +76,9 @@ public class LabourREgistration extends SQLiteOpenHelper {
         db.close();
 
         if (storedPassword.equals(password)) {
-            return role; // Return role if password matches
+            return role;
         } else {
-            return null; // Return null if password is incorrect
+            return null;
         }
     }
 
@@ -86,11 +86,11 @@ public class LabourREgistration extends SQLiteOpenHelper {
         cursor.close();
     }
     db.close();
-    return null; // Return null if user doesn't exist
+    return null;
 }
 
 
-    // Check if a user exists by mobile number
+
     public boolean isUserExists(String mobile) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT 1 FROM " + TABLE_USER + " WHERE " + COLUMN_MOBILE + " = ?";
@@ -128,7 +128,7 @@ public class LabourREgistration extends SQLiteOpenHelper {
     public Cursor getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_USER;
-        return db.rawQuery(query, null); // Don't forget to handle this properly in calling code
+        return db.rawQuery(query, null);
     }
     public Cursor getUserDetailsByRole(String role) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -147,11 +147,11 @@ public class LabourREgistration extends SQLiteOpenHelper {
 
     public boolean deleteUserById(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int rowsAffected = db.delete(TABLE_USER, COLUMN_ID + " = ?", new String[]{id}); // Delete user by ID
+        int rowsAffected = db.delete(TABLE_USER, COLUMN_ID + " = ?", new String[]{id});
 
-        db.close(); // Close database after operation
+        db.close();
 
-        return rowsAffected > 0; // Return true if a user was deleted, otherwise false
+        return rowsAffected > 0;
     }
 
 

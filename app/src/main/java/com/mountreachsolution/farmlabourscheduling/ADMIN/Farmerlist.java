@@ -46,13 +46,13 @@ public class Farmerlist extends Fragment {
         farmerRegistration = new FarmerRegistration(getActivity());
         rvlist.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        // Initialize the adapter with filtered data
+
         adapterFarmer = new AdapterFarmer(id, filteredName, filteredNumber, filteredAddress, filteredAge, filteredAdhrno, getActivity());
         rvlist.setAdapter(adapterFarmer);
 
         displaydata();
 
-        // Setting up SearchView listener
+
         svserch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -82,19 +82,19 @@ public class Farmerlist extends Fragment {
             } while (cursor.moveToNext());
             cursor.close();
         }
-        // Copy original data to filtered lists
+
         filteredName.addAll(name);
         filteredNumber.addAll(number);
         filteredAddress.addAll(address);
         filteredAge.addAll(age);
         filteredAdhrno.addAll(adhrno);
 
-        // Notify the adapter that data has been loaded
+
         adapterFarmer.notifyDataSetChanged();
     }
 
     private void filterData(String query) {
-        // Clear filtered lists to store the filtered results
+
         filteredName.clear();
         filteredNumber.clear();
         filteredAddress.clear();
@@ -102,14 +102,14 @@ public class Farmerlist extends Fragment {
         filteredAdhrno.clear();
 
         if (query.isEmpty()) {
-            // If the query is empty, show all data
+
             filteredName.addAll(name);
             filteredNumber.addAll(number);
             filteredAddress.addAll(address);
             filteredAge.addAll(age);
             filteredAdhrno.addAll(adhrno);
         } else {
-            // Filter data based on the query
+
             for (int i = 0; i < name.size(); i++) {
                 if (name.get(i).toLowerCase().contains(query.toLowerCase())) {
                     filteredName.add(name.get(i));
@@ -121,7 +121,7 @@ public class Farmerlist extends Fragment {
             }
         }
 
-        // Notify the adapter that the data has been filtered
+
         adapterFarmer.notifyDataSetChanged();
     }
 }

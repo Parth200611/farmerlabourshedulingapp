@@ -32,11 +32,11 @@ public class Labourdetails extends AppCompatActivity {
         getWindow().setNavigationBarColor(ContextCompat.getColor(Labourdetails.this, R.color.white));
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        // Get the Labour ID from the intent
+
         id = getIntent().getStringExtra("labourid");
         Log.d("Labourdetails", "Received Labour ID: " + id);
 
-        // Initialize Views
+
         tvname = findViewById(R.id.tvnameValue);
         tvage = findViewById(R.id.agevalue);
         tvnumber = findViewById(R.id.Mobilenovalue);
@@ -44,10 +44,10 @@ public class Labourdetails extends AppCompatActivity {
 //     tvskill = findViewById(R.id.skillValue);
         btnRemoveuser = findViewById(R.id.btnremoveuser);
 
-        // Initialize LabourREgistration instance
+
         labourREgistration = new LabourREgistration(Labourdetails.this);
 
-        // Set click listener for the Remove User button
+
         btnRemoveuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +55,7 @@ public class Labourdetails extends AppCompatActivity {
             }
         });
 
-        // Fetch and display labour data
+
         getdata(id);
     }
 
@@ -67,39 +67,39 @@ public class Labourdetails extends AppCompatActivity {
             Log.d("Labourdetails", "Cursor is not null.");
 
             if (cursor.moveToFirst()) {
-                // Log all column names to verify the data structure
+
                 String[] columnNames = cursor.getColumnNames();
                 for (String column : columnNames) {
                     Log.d("Labourdetails", "Column: " + column);
                 }
 
-                // Ensure columns exist before accessing
+
                 int nameIndex = cursor.getColumnIndex("name");
                 int mobileIndex = cursor.getColumnIndex("mobileno");
                 int ageIndex = cursor.getColumnIndex("age");
                 int addressIndex = cursor.getColumnIndex("address");
 
-                // Log the column indices to verify
+
                 Log.d("Labourdetails", "Name Index: " + nameIndex);
                 Log.d("Labourdetails", "Mobile Index: " + mobileIndex);
                 Log.d("Labourdetails", "Age Index: " + ageIndex);
                 Log.d("Labourdetails", "Address Index: " + addressIndex);
 
-                // Check if all required columns are found
+
                 if (nameIndex != -1 && mobileIndex != -1 && ageIndex != -1 && addressIndex != -1) {
-                    // Retrieve data from cursor
+
                     String name = cursor.getString(nameIndex);
                     String mobile = cursor.getString(mobileIndex);
                     String age = cursor.getString(ageIndex);
                     String address = cursor.getString(addressIndex);
 
-                    // Log the data to ensure it's fetched properly
+
                     Log.d("Labourdetails", "Name: " + name);
                     Log.d("Labourdetails", "Mobile: " + mobile);
                     Log.d("Labourdetails", "Age: " + age);
                     Log.d("Labourdetails", "Address: " + address);
 
-                    // Set data to TextViews
+
                     tvname.setText(name);
                     tvnumber.setText(mobile);
                     tvage.setText(age);
@@ -125,7 +125,7 @@ public class Labourdetails extends AppCompatActivity {
             Intent i = new Intent(Labourdetails.this, AdminHomepage.class);
             startActivity(i);
         } else {
-            // Handle failure case
+
             Toast.makeText(this, "Failed to delete user", Toast.LENGTH_SHORT).show();
         }
     }

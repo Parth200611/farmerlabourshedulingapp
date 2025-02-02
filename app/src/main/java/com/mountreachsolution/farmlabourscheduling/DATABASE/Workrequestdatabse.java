@@ -92,20 +92,20 @@ public class Workrequestdatabse extends SQLiteOpenHelper {
     }
     public Cursor getRequest(String number) {
         if (number == null || number.isEmpty()) {
-            return null; // Return null to avoid passing a null value to the query
+            return null;
         }
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_FARMER_MOBILE + " = ?", new String[]{number});
     } public Cursor getRequestDEtails(String id) {
         if (id == null || id.isEmpty()) {
-            return null; // Return null to avoid passing a null value to the query
+            return null;
         }
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?", new String[]{id});
     }
     public int deleteDataById(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        // Use the id to delete the record from the database
+
         return db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id});
     }
 }

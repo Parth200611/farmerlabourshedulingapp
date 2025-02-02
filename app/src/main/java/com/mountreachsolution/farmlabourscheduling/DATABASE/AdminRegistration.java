@@ -59,12 +59,12 @@ public class AdminRegistration extends SQLiteOpenHelper {
     public String loginUser(String mobile, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Fix: Use correct table and column names
+
         String query = "SELECT " + COLUMN_ROLE + ", " + COLUMN_PASSWORD + " FROM " + TABLE_ADMIN + " WHERE " + COLUMN_NUMBER + " = ?";
         Cursor cursor = db.rawQuery(query, new String[]{mobile});
 
         if (cursor != null && cursor.moveToFirst()) {
-            // Retrieve the stored password and role from the database
+
             String storedPassword = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
             String role = cursor.getString(cursor.getColumnIndex(COLUMN_ROLE));
 
@@ -72,10 +72,10 @@ public class AdminRegistration extends SQLiteOpenHelper {
             db.close();
 
             if (storedPassword.equals(password)) {
-                // If passwords match, return the role
+
                 return role;
             } else {
-                // If the password doesn't match, return a specific message
+
                 return "INCORRECT_PASSWORD";
             }
         }
@@ -84,6 +84,6 @@ public class AdminRegistration extends SQLiteOpenHelper {
             cursor.close();
         }
         db.close();
-        return null;  // Return null if no matching user is found
+        return null;
     }
 }

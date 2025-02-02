@@ -33,7 +33,7 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
-                COLUMN_MOBILE + " TEXT UNIQUE, " +  // Added UNIQUE constraint
+                COLUMN_MOBILE + " TEXT UNIQUE, " +
                 COLUMN_AGE + " TEXT , " +
                 COLUMN_ADDRESS + " TEXT, " +
                 COLUMN_ADHAR + " TEXT, " +
@@ -75,9 +75,9 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         db.close();
 
         if (storedPassword.equals(password)) {
-            return role; // Return role if password matches
+            return role;
         } else {
-            return null; // Return null if password is incorrect
+            return null;
         }
     }
 
@@ -85,11 +85,11 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         cursor.close();
     }
     db.close();
-    return null; // Return null if user doesn't exist
+    return null;
 }
 
 
-    // Check if a user exists by mobile number
+
     public boolean isUserExists(String mobile) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT 1 FROM " + TABLE_USER + " WHERE " + COLUMN_MOBILE + " = ?";
@@ -126,7 +126,7 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         int result = db.delete(TABLE_USER, COLUMN_ID + " = ?", new String[]{id});
         db.close();
-        return result > 0; // Returns true if deletion was successful
+        return result > 0;
     }
 
 

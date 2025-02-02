@@ -20,10 +20,10 @@ public class languageSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Load the saved language setting before setting content view
+
         loadLocale();
 
-        // Set the layout after language change
+
         setContentView(R.layout.activity_language_select);
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -35,7 +35,7 @@ public class languageSelect extends AppCompatActivity {
         btnMarathi = findViewById(R.id.btnMarathi);
         btnHindi = findViewById(R.id.btnHindi);
 
-        // Set click listeners for changing the language
+
         btnEnglish.setOnClickListener(v -> {
             setLocale("en"); // English
             navigateToNextPage();
@@ -52,31 +52,30 @@ public class languageSelect extends AppCompatActivity {
         });
     }
 
-    // Function to change the language and apply it immediately
-    private void setLocale(String langCode) {
-        // Save the selected language in SharedPreferences
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", langCode);  // Save the language code
-        editor.apply();  // Apply the changes
 
-        // Set the locale for the app dynamically
+    private void setLocale(String langCode) {
+
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", langCode);
+        editor.apply();
+
         Locale locale = new Locale(langCode);
         Locale.setDefault(locale);
         android.content.res.Configuration config = getResources().getConfiguration();
         config.setLocale(locale);
 
-        // Apply the updated configuration
+
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
-    // Load the saved language when the app restarts
+
     private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", MODE_PRIVATE);
-        String language = prefs.getString("My_Lang", "en"); // Default to English if not set
+        String language = prefs.getString("My_Lang", "en");
         setLocale(language);
     }
 
-    // Navigate to the next page based on the category
+
     private void navigateToNextPage() {
         Intent intent = null;
         if (category != null) {

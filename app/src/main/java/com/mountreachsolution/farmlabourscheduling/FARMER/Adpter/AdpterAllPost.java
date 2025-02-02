@@ -54,12 +54,12 @@ public class AdpterAllPost extends RecyclerView.Adapter<AdpterAllPost.Viewholder
         holder.tvwasge.setText(wages.get(position));
         holder.tvcrop.setText(crop.get(position));
 
-        // Set onClickListener for cardView
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, PostDetails.class);
-                i.putExtra("workid", id.get(position)); // Pass the correct work ID
+                i.putExtra("workid", id.get(position));
                 context.startActivity(i);
             }
         });

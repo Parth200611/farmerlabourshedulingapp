@@ -26,7 +26,7 @@ public class profil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view= inflater.inflate(R.layout.fragment_profil2, container, false);
 
         btnlogout=view.findViewById(R.id.btnlogout);
@@ -43,14 +43,14 @@ public class profil extends Fragment {
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.remove("LoggedInNumber");  // Remove saved login information
-            editor.remove("LoggedInRole");  // Remove saved role information
+            editor.remove("LoggedInNumber");
+            editor.remove("LoggedInRole");
             editor.apply();
 
-            // Optionally, log to check if it's cleared
+
             Log.d("Logout", "User logged out, session cleared");
 
-            // Redirect to the login screen
+
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             getActivity().finish();

@@ -60,21 +60,21 @@ public class REjectedRequest extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE);  // Execute the SQL statement to create the table
+        db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);  // Recreate the table if it already exists (on upgrade)
+        onCreate(db);
     }
     public long insertData(String name, String mobileno, String address, String work, String wages, String starttime, String endtime, String workdate,
                            String crop, String image, String labour, String labourname, String labournumber, String labouraddress, String labourskill,
                            String labouradhar, String labourage) {
-        SQLiteDatabase db = this.getWritableDatabase();  // Get writable database
-        ContentValues contentValues = new ContentValues();  // ContentValues to hold the data
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
 
-        // Put the values into the ContentValues object
+
         contentValues.put(COLUMN_NAME, name);
         contentValues.put(COLUMN_MOBILE_NO, mobileno);
         contentValues.put(COLUMN_ADDRESS, address);
@@ -93,7 +93,7 @@ public class REjectedRequest extends SQLiteOpenHelper {
         contentValues.put(COLUMN_LABOUR_AADHAR, labouradhar);
         contentValues.put(COLUMN_LABOUR_AGE, labourage);
 
-        // Insert data and return the row ID of the inserted data
+
         return db.insert(TABLE_NAME, null, contentValues);
     }
 }

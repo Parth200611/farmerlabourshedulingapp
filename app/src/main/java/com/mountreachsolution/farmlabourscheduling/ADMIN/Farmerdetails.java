@@ -37,10 +37,10 @@ public class Farmerdetails extends AppCompatActivity {
         getWindow().setNavigationBarColor(ContextCompat.getColor(Farmerdetails.this, R.color.white));
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        // Get the Farmer ID from the intent
+
         id = getIntent().getStringExtra("Farmerid");
 
-        // Initialize Views
+
         tvname = findViewById(R.id.tvnameValue);
         tvage = findViewById(R.id.agevalue);
         tvnumber = findViewById(R.id.Mobilenovalue);
@@ -48,10 +48,10 @@ public class Farmerdetails extends AppCompatActivity {
         tvadharno = findViewById(R.id.adharvalue);
         btnRemoveuser = findViewById(R.id.btnremoveuser);
 
-        // Initialize FarmerRegistration instance
+
         farmerRegistration = new FarmerRegistration(Farmerdetails.this);
 
-        // Set click listener for the Remove User button
+
         btnRemoveuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +59,12 @@ public class Farmerdetails extends AppCompatActivity {
             }
         });
 
-        // Fetch and display farmer data
+
         getdata(id);
     }
 
     private void getdata(String id) {
-        Cursor cursor = farmerRegistration.getUserById(id); // Use the correct ID
+        Cursor cursor = farmerRegistration.getUserById(id);
 
         if (cursor != null && cursor.moveToFirst()) {
             String name = cursor.getString(cursor.getColumnIndex("name"));
@@ -73,7 +73,7 @@ public class Farmerdetails extends AppCompatActivity {
             String address = cursor.getString(cursor.getColumnIndex("address"));
             String adharno = cursor.getString(cursor.getColumnIndex("adharno"));
 
-            // Set values to TextViews
+
             tvname.setText(name);
             tvnumber.setText(mobile);
             tvage.setText(age);
@@ -92,7 +92,7 @@ public class Farmerdetails extends AppCompatActivity {
             Intent i = new Intent(Farmerdetails.this, AdminHomepage.class);
             startActivity(i);
         } else {
-            // Handle failure case
+
             Toast.makeText(this, "Failed to delete user", Toast.LENGTH_SHORT).show();
         }
     }

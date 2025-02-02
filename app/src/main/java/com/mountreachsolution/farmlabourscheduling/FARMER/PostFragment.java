@@ -47,18 +47,18 @@ public class PostFragment extends Fragment {
     Uri imageUri;
 
 
-    private static final int PICK_IMAGE_REQUEST = 1; // Request code for picking image
+    private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_IMAGE = 100;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_post, container, false);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Userdata", Context.MODE_PRIVATE);
 
-        // Fetch data using the keys
+
         strname = sharedPreferences.getString("userName", "Default Name");
         strmobileno = sharedPreferences.getString("userMobile", "Default Mobile");
         Log.d("UserData", "Fetched Name: " + strname);
@@ -85,14 +85,14 @@ public class PostFragment extends Fragment {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDayOfMonth) {
-                        // Format the selected date as a String
+
                         String selectedDate = selectedDayOfMonth + "/" + (selectedMonth + 1) + "/" + selectedYear;
 
-                        // Set the selected date in the EditText
+
                         etworkingdate.setText(selectedDate);
 
-                        // Store the selected date in a String variable
-                         strdate = selectedDate; // Store date in String variable for further use
+
+                         strdate = selectedDate;
                     }
                 }, year, month, day);
 
@@ -177,10 +177,10 @@ public class PostFragment extends Fragment {
                 if (strname.isEmpty() || strmobileno.isEmpty() || strworkname.isEmpty() || strlabour.isEmpty() || straddress.isEmpty() ||
                         strwages.isEmpty() || strstartimae.isEmpty() || strendtime.isEmpty() || strdate.isEmpty() || cropname.isEmpty()) {
 
-                    // Show Toast if any field is empty
+
                     Toast.makeText(getActivity(), "Please enter all data properly.", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Execute method for posting the work if all fields are filled
+
                     executePostWorkMethod();
                 }
 
@@ -207,7 +207,7 @@ public class PostFragment extends Fragment {
         etsatrttime.setText("");
         etendtime.setText("");
         etworkingdate.setText("");
-        ivwork.setImageResource(R.drawable.baseline_camera_alt_24); // Set a placeholder image
+        ivwork.setImageResource(R.drawable.baseline_camera_alt_24);
         imagepath = null;
     }
 
@@ -216,18 +216,17 @@ public class PostFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Check if the result is OK and we have a valid data
+
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
 
-            // Display the selected image in ImageView
+
             ivwork.setImageURI(imageUri);
 
-            // Convert the image URI to String and insert it into the database
-            // Use the appropriate number here
+
             imagepath=imageUri.toString();
 
-            // Optionally, show a toast or message indicating that the image is uploaded
+
             Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
@@ -235,6 +234,6 @@ public class PostFragment extends Fragment {
     }
 
 
-    // Getters for the selected values
+
 
 }

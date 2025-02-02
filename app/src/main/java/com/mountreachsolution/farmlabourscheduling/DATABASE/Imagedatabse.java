@@ -62,28 +62,28 @@ public class Imagedatabse extends SQLiteOpenHelper {
     public String getImageByNumber(String number) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Query to fetch image for the provided number
+
         String selection = COLUMN_NUMBER + " = ?";
         String[] selectionArgs = { number };
 
         Cursor cursor = db.query(
-                TABLE_NAME,     // Table name
-                new String[]{COLUMN_IMAGE}, // Columns to return (only image column)
-                selection,      // WHERE clause
-                selectionArgs,  // Values for WHERE clause
-                null,            // Grouping rows (null means no grouping)
-                null,            // Filtering rows (null means no filtering)
-                null             // Sorting order (null means no sorting)
+                TABLE_NAME,
+                new String[]{COLUMN_IMAGE},
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
         );
 
-        // Check if cursor has data and return the image URI (if found)
+
         if (cursor != null && cursor.moveToFirst()) {
             String imageUri = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE));
-            cursor.close(); // Close cursor after use
-            return imageUri; // Return the image URI
+            cursor.close();
+            return imageUri;
         } else {
             cursor.close();
-            return null; // Return null if no data is found
+            return null;
         }
     }
 

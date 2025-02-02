@@ -67,7 +67,7 @@ public class Adpterallrequest extends RecyclerView.Adapter<Adpterallrequest.View
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(context, DetailsRequest.class);
-                i.putExtra("requestid", id.get(position)); // Pass the correct work ID
+                i.putExtra("requestid", id.get(position));
                 context.startActivity(i);
             }
         });

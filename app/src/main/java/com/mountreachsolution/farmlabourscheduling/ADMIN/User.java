@@ -19,7 +19,7 @@ public class User {
         this.adharno = adharno;
     }
 
-    // Getters and Setters for all fields
+
     public String getId() {
         return id;
     }

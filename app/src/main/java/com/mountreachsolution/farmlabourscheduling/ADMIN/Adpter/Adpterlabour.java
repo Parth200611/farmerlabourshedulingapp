@@ -73,7 +73,7 @@ public class Adpterlabour extends RecyclerView.Adapter<Adpterlabour.ViewHolder> 
         this.age = age;
         this.adharNo = adharNo;
         this.skill = skill;
-        // Notify the adapter that the data has changed and it should update the RecyclerView
+
         notifyDataSetChanged();
     }
 

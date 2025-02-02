@@ -29,7 +29,7 @@ public class labourlist extends Fragment {
     RecyclerView rvlist;
     LabourREgistration labourREgistration;
     UserAdapter adapter;
-    List<User> userList, filteredList; // Original and filtered lists
+    List<User> userList, filteredList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,12 +41,12 @@ public class labourlist extends Fragment {
         userList = new ArrayList<>();
         filteredList = new ArrayList<>();
 
-        adapter = new UserAdapter(filteredList, getActivity()); // Set filtered list to adapter
+        adapter = new UserAdapter(filteredList, getActivity());
         rvlist.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvlist.setAdapter(adapter);
 
         labourREgistration = new LabourREgistration(getActivity());
-        loadUserData(); // Load users from database
+        loadUserData();
 
         svserch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -82,7 +82,7 @@ public class labourlist extends Fragment {
             } while (cursor.moveToNext());
 
             cursor.close();
-            filteredList.addAll(userList); // Initially, show all users
+            filteredList.addAll(userList);
             adapter.notifyDataSetChanged();
         } else {
             Toast.makeText(getActivity(), "No users found", Toast.LENGTH_SHORT).show();

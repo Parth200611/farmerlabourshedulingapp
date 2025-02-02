@@ -44,12 +44,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.cvcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (user.getId() != null) {  // Ensure ID is not null
+                if (user.getId() != null) {
                     Intent i = new Intent(context, Labourdetails.class);
-                    i.putExtra("labourid", user.getId());  // Ensure correct data type
+                    i.putExtra("labourid", user.getId());
                     context.startActivity(i);
                 } else {
-                    // Log error or handle missing ID
+
                     Log.e("UserAdapter", "Labour ID is null for user: " + user.getName());
                 }
             }

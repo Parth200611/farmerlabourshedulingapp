@@ -110,18 +110,18 @@ public class ProfilFragment extends Fragment {
         String imageUriOrBase64 = dbHelper.getImageByNumber(number);
         if (imageUriOrBase64 != null) {
             try {
-                // If the value is base64, decode it
+
                 byte[] decodedString = Base64.decode(imageUriOrBase64, Base64.DEFAULT);
                 Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-                // Load the decoded Bitmap into the ImageView using Glide
+
                 Glide.with(this)
                         .load(decodedBitmap)
                         .into(imageView);
             } catch (Exception e) {
-                // If the image is a URI, you can load it as a normal image
+
                 Glide.with(this)
-                        .load(imageUriOrBase64)  // URI handling
+                        .load(imageUriOrBase64)
                         .into(imageView);
             }
         } else {
@@ -134,14 +134,14 @@ public class ProfilFragment extends Fragment {
     private void logoutUser() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserLoginPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("LoggedInNumber");  // Remove saved login information
-        editor.remove("LoggedInRole");  // Remove saved role information
+        editor.remove("LoggedInNumber");
+        editor.remove("LoggedInRole");
         editor.apply();
 
-        // Optionally, log to check if it's cleared
+
         Log.d("Logout", "User logged out, session cleared");
 
-        // Redirect to the login screen
+
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
         getActivity().finish();
@@ -183,10 +183,9 @@ public class ProfilFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             if (imageUri != null) {
-                // Load the image using Glide or ImageView
-                imageView.setImageURI(imageUri);
 
-                // Insert the image URI into the database
+                imageView.setImageURI(imageUri);
+ // Insert the image URI into the database
                 dbHelper.insertImagePath(number, imageUri.toString());
                 Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
             } else {
