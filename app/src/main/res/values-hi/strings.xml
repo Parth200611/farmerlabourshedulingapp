@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <string name="work_schedul">कार्य अनुसूची</string>
+        <string name="search_by_work_crop_wages_date">काम, फसल, मजदूरी, तिथि से खोजें</string>
+        <string name="welcome_to_farm_labour_scheduling">फार्म श्रमिक अनुसूची में आपका स्वागत है</string>
+        <string name="age">आयु:</string>
+        <string name="adhar_no">आधार संख्या:</string>
+        <string name="address">पता:</string>
+        <string name="mobile_no">मोबाइल नंबर:</string>
+        <string name="skills">कौशल:</string>
+        <string name="log_out">लॉग आउट</string>
+        <string name="all_labour_list">सभी श्रमिकों की सूची</string>
+        <string name="search_by_name_number">नाम, नंबर द्वारा खोजें</string>
+        <string name="no_request">कोई अनुरोध नहीं</string>
+        <string name="search_for_task_here">यहां कार्य खोजें!</string>
+        <string name="search_by_work_or_location">कार्य या स्थान द्वारा खोजें</string>
+        <string name="task_schedul">कार्य अनुसूची</string>
+        <string name="all_farmers_list">सभी किसानों की सूची</string>
+        <string name="name">नाम:</string>
+        <string name="address1">पता:</string>
+        <string name="date1">तारीख:</string>
+        <string name="labour_required">आवश्यक श्रमिक:</string>
+        <string name="crop">फसल:</string>
+        <string name="wages">मजदूरी:</string>
+        <string name="waiting_requests">प्रतीक्षारत अनुरोध</string>
+        <string name="labour_details">श्रमिक विवरण</string>
+        <string name="all_post_here">सभी पोस्ट यहाँ!</string>
+        <string name="all_request">सभी अनुरोध</string>
+        <string name="search_by_task_crop_wages_date">कार्य, फसल, मजदूरी, तिथि द्वारा खोजें</string>
+        <string name="search_for_task">कार्य खोजें</string>
+        <string name="create_your_account">अपना खाता बनाएं</string>
+        <string name="sign_up_to_begin_your_journey">अपनी यात्रा शुरू करने के लिए साइन अप करें</string>
+        <string name="password">पासवर्ड</string>
+        <string name="at_least_one_uppercase_letter_a_z_and_a_z">• कम से कम एक बड़ा अक्षर (A-Z) और (a-z)</string>
+        <string name="no_space_between_password">• पासवर्ड में कोई स्थान नहीं</string>
+        <string name="use_special_symbol_or_numbers_0_9">• विशेष प्रतीक या संख्या (0-9) का उपयोग करें</string>
+        <string name="log_in">लॉग इन करें</string>
+        <string name="done_with_work">कार्य समाप्त</string>
+        <string name="remove_user">उपयोगकर्ता हटाएं</string>
+        <string name="login_to_unlock_new_opportunities">नई संभावनाओं को अनलॉक करने के लिए लॉग इन करें</string>
+        <string name="mobile_number">मोबाइल नंबर</string>
+        <string name="show_password">पासवर्ड दिखाएं</string>
+        <string name="new_user_click_here">नया उपयोगकर्ता? | यहाँ क्लिक करें</string>
+        <string name="by_log_in_you_agree_to_our_private_policy">लॉग इन करके, आप हमारी निजी नीति से सहमत होते हैं</string>
+        <string name="remove_post">पोस्ट हटाएं</string>
+        <string name="accept">स्वीकार करें</string>
+        <string name="reject">अस्वीकार करें</string>
+        <string name="keep_waiting">प्रतीक्षा करें</string>
+        <string name="post_task">कार्य पोस्ट करें</string>
+        <string name="work_name">कार्य का नाम</string>
+        <string name="crop_name">फसल का नाम</string>
+        <string name="start_time">प्रारंभ समय</string>
+        <string name="end_time">समाप्ति समय</string>
+        <string name="working_date">कार्य तिथि</string>
+        <string name="add_image">छवि जोड़ें</string>
+        <string name="post_work">कार्य पोस्ट करें</string>
+
+</resources>

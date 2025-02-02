@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Labour Details"
+        android:text="@string/labour_details"
         android:layout_marginTop="50dp"
         android:layout_marginStart="16sp"
         android:textColor="@color/black"
@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"
+            android:text="@string/name"
             android:textSize="16sp"
             />
         <TextView
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address:"
+            android:text="@string/address1"
             android:textSize="16sp"
             />
         <TextView
@@ -155,7 +155,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date:"
+            android:text="@string/date1"
             android:textSize="16sp"
             />
 
@@ -180,7 +180,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Labour Required:"
+            android:text="@string/labour_required"
             android:textSize="16sp"
             />
         <TextView
@@ -206,7 +206,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crop:"
+        android:text="@string/crop"
         android:textSize="16sp"
         />
     <TextView
@@ -232,7 +232,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wages:"
+        android:text="@string/wages"
         android:textSize="16sp"
         />
     <TextView
@@ -258,7 +258,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skills:"
+        android:text="@string/skills"
         android:textSize="16sp"
         />
     <TextView
@@ -284,7 +284,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age:"
+        android:text="@string/age"
         android:textSize="16sp"
         />
     <TextView
@@ -314,7 +314,7 @@
         android:layout_height="wrap_content"
 
         android:backgroundTint="@color/green"
-        android:text="Accept"
+        android:text="@string/accept"
         android:textColor="@color/white"
         android:id="@+id/btnapply"
         android:layout_weight="1"
@@ -324,7 +324,7 @@
         android:layout_height="wrap_content"
 
         android:backgroundTint="@color/green"
-        android:text="Reject"
+        android:text="@string/reject"
         android:textColor="@color/white"
         android:id="@+id/btnreject"
         android:layout_weight="1"
@@ -338,7 +338,7 @@
             android:layout_marginBottom="150dp"
 
             android:backgroundTint="#FFC107"
-            android:text="Keep Waiting"
+            android:text="@string/keep_waiting"
             android:textColor="@color/white"
             android:id="@+id/btnkeppwaiting"
             android:layout_weight="1"

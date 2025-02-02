@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Request"
+        android:text="@string/all_request"
         android:layout_marginTop="50dp"
         android:layout_marginStart="16sp"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search by task,crop,wages,date"
+        android:queryHint="@string/search_by_task_crop_wages_date"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="work_schedul">Work Schedul</string><string name="app_name">Farmer</string>
+    <string name="search_by_work_crop_wages_date">Search by work,crop,wages,date</string>
+    <string name="welcome_to_farm_labour_scheduling">Welcome to Farm Labour Scheduling</string>
+    <string name="age">Age:</string>
+    <string name="adhar_no">Adhar No:</string>
+    <string name="address">Address:</string>
+    <string name="mobile_no">Mobile No:</string>
+    <string name="skills">Skills:</string>
+    <string name="log_out">Log Out</string>
+    <string name="all_labour_list">All Labour List</string>
+    <string name="search_by_name_number">Search by name,number</string>
+    <string name="no_request">No Request</string>
+    <string name="search_for_task_here">Search For Task Here!</string>
+    <string name="search_by_work_or_location">Search by work or location</string>
+    <string name="task_schedul">Task Schedul</string>
+    <string name="all_farmers_list">All Farmers List</string>
+    <string name="name">Name:</string>
+    <string name="address1">Address:</string>
+    <string name="date1">Date:</string>
+    <string name="labour_required">Labour Required:</string>
+    <string name="crop">Crop:</string>
+    <string name="wages">wages:</string>
+    <string name="waiting_requests">Waiting Requests</string>
+    <string name="labour_details">Labour Details</string>
+    <string name="all_post_here">All Post Here!</string>
+    <string name="all_request">All Request</string>
+    <string name="search_by_task_crop_wages_date">Search by task,crop,wages,date</string>
+    <string name="search_for_task">Search for task</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="sign_up_to_begin_your_journey">Sign up to begin your journey</string>
+    <string name="password">Password</string>
+    <string name="at_least_one_uppercase_letter_a_z_and_a_z">• At least one uppercase letter (A-Z) and (a-z)</string>
+    <string name="no_space_between_password">• No space between password</string>
+    <string name="use_special_symbol_or_numbers_0_9">• Use special symbol or numbers(0-9)</string>
+    <string name="log_in">LOG IN</string>
+    <string name="done_with_work">Done with work</string>
+    <string name="remove_user">Remove User</string>
+    <string name="login_to_unlock_new_opportunities">Login to Unlock New Opportunities</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="show_password">show password</string>
+    <string name="new_user_click_here">New User? | Click Here</string>
+    <string name="by_log_in_you_agree_to_our_private_policy">By Log in You agree to our private policy</string>
+    <string name="remove_post">Remove Post</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="keep_waiting">Keep Waiting</string>
+    <string name="post_task">POST TASK</string>
+    <string name="work_name">Work Name</string>
+    <string name="crop_name">Crop Name</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="working_date">Working Date</string>
+    <string name="add_image">Add Image</string>
+    <string name="post_work">Post Work</string>
+</resources>

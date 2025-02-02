@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search For Task Here!"
+        android:text="@string/search_for_task_here"
         android:layout_marginTop="100dp"
         android:layout_marginStart="16sp"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search by work or location"
+        android:queryHint="@string/search_by_work_or_location"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"

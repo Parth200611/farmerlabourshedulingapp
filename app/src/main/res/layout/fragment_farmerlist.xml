@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Farmers List"
+        android:text="@string/all_farmers_list"
         android:layout_marginTop="100dp"
         android:layout_marginStart="16sp"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search by name,number"
+        android:queryHint="@string/search_by_name_number"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Request"
+        android:text="@string/no_request"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="40dp"

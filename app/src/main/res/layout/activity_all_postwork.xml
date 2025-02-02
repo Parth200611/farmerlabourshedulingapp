@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Post Here!"
+        android:text="@string/all_post_here"
         android:layout_marginTop="50dp"
         android:layout_marginStart="16sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search for task "
+        android:queryHint="@string/search_for_task"
         android:iconifiedByDefault="false"
         android:background="@drawable/edittextback"
         android:layout_marginBottom="8dp"

@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOG IN"
+                android:text="@string/log_in"
                 android:textColor="#271611"
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login to Unlock New Opportunities"
+                android:text="@string/login_to_unlock_new_opportunities"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
@@ -53,7 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mobile Number"
+                android:text="@string/mobile_number"
                 android:textColor="#565656"
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16sp"
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="@string/password"
                 android:textColor="#565656"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16sp"
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="show password"
+                android:text="@string/show_password"
                 android:id="@+id/cbLoginShowpassword"
                 android:backgroundTint="@color/lightbrown"
                 />
@@ -105,14 +105,14 @@
                 android:layout_marginEnd="16sp"
                 android:id="@+id/btnLoginButton"
                 android:background="#4CAF50"
-                android:text="LOG IN"
+                android:text="@string/log_in"
                 android:textColor="@color/white"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New User? | Click Here "
+                android:text="@string/new_user_click_here"
                 android:textColor="@color/lightbrown"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
@@ -123,7 +123,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="By Log in You agree to our private policy"
+                android:text="@string/by_log_in_you_agree_to_our_private_policy"
                 android:textColor="#767373"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"

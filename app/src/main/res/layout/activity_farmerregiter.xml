@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Your Account"
+            android:text="@string/create_your_account"
             android:textColor="#271611"
             android:layout_marginStart="12dp"
             android:layout_marginTop="36dp"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up to begin your journey"
+            android:text="@string/sign_up_to_begin_your_journey"
             android:textColor="@color/black"
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
@@ -37,7 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@string/name"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -56,7 +56,7 @@
             />  <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mobile Number"
+        android:text="@string/mobile_no"
         android:textColor="#565656"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16sp"
@@ -75,7 +75,7 @@
             /> <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:text="@string/address1"
         android:textColor="#565656"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16sp"
@@ -94,7 +94,7 @@
             /> <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age"
+        android:text="@string/age"
         android:textColor="#565656"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16sp"
@@ -114,7 +114,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adhar Number"
+            android:text="@string/adhar_no"
             android:textColor="#565656"
             android:layout_marginTop="10dp"
             android:layout_marginStart="16sp"
@@ -133,7 +133,7 @@
             /><TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="@string/password"
         android:textColor="#565656"
         android:layout_marginTop="10dp"
         android:layout_marginStart="14sp"
@@ -154,7 +154,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="• At least one uppercase letter (A-Z) and (a-z)"
+            android:text="@string/at_least_one_uppercase_letter_a_z_and_a_z"
             android:textSize="12sp"
             android:textColor="@android:color/black"
             android:layout_marginTop="4dp"
@@ -163,7 +163,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="• No space between password"
+        android:text="@string/no_space_between_password"
         android:textSize="12sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="4dp"
@@ -172,7 +172,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="• Use special symbol or numbers(0-9)"
+        android:text="@string/use_special_symbol_or_numbers_0_9"
         android:textSize="12sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="4dp"
@@ -186,7 +186,7 @@
             android:layout_marginTop="21sp"
             android:id="@+id/btnRegisterButton"
             android:background="#4CAF50"
-            android:text="LOG IN"
+            android:text="@string/log_in"
             android:textColor="@color/white"
             android:layout_marginBottom="100dp"
             />

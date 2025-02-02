@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="POST TASK"
+            android:text="@string/post_task"
             android:textSize="26dp"
             android:textColor="@color/drown"
             android:textStyle="bold"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Work Name"
+            android:text="@string/work_name"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crop Name"
+            android:text="@string/crop_name"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -64,7 +64,7 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Labour Required"
+        android:text="@string/labour_required"
         android:textColor="#565656"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16sp"
@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
+            android:text="@string/address"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -105,7 +105,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wages"
+            android:text="@string/wages"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -124,7 +124,7 @@
             />  <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Time"
+        android:text="@string/start_time"
         android:textColor="#565656"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16sp"
@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="End Time"
+            android:text="@string/end_time"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -165,7 +165,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Working Date"
+            android:text="@string/working_date"
             android:textColor="#565656"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16sp"
@@ -194,7 +194,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Image"
+            android:text="@string/add_image"
             android:id="@+id/btnaddworkimage"
             android:backgroundTint="@color/green"
             android:layout_marginStart="16sp"
@@ -203,7 +203,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Work"
+            android:text="@string/post_work"
             android:layout_marginStart="16sp"
             android:layout_marginEnd="16sp"
             android:layout_marginTop="16sp"

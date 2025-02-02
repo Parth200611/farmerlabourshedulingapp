@@ -18,17 +18,20 @@
         android:id="@+id/btnEnglish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:text="English" />
 
     <Button
         android:id="@+id/btnMarathi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:text="मराठी" />
 
     <Button
         android:id="@+id/btnHindi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:text="हिंदी" />
 </LinearLayout>
