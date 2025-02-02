@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 
 import java.util.Locale;
 
@@ -19,6 +21,8 @@ public class languageSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_select);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        getWindow().setStatusBarColor(ContextCompat.getColor(languageSelect.this,R.color.lightbrown));
 
         category = getIntent().getStringExtra("category");
         Log.d("FarmerRegistration", "Category received: " + category);
