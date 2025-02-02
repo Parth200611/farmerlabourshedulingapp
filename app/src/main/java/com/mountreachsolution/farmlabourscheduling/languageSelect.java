@@ -3,7 +3,6 @@ package com.mountreachsolution.farmlabourscheduling;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,12 +19,17 @@ public class languageSelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Load the saved language setting before setting content view
+        loadLocale();
+
+        // Set the layout after language change
         setContentView(R.layout.activity_language_select);
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        getWindow().setStatusBarColor(ContextCompat.getColor(languageSelect.this,R.color.lightbrown));
+        getWindow().setStatusBarColor(ContextCompat.getColor(languageSelect.this, R.color.lightbrown));
 
         category = getIntent().getStringExtra("category");
-        Log.d("FarmerRegistration", "Category received: " + category);
 
         btnEnglish = findViewById(R.id.btnEnglish);
         btnMarathi = findViewById(R.id.btnMarathi);
@@ -48,19 +52,21 @@ public class languageSelect extends AppCompatActivity {
         });
     }
 
-    // Function to change the language
+    // Function to change the language and apply it immediately
     private void setLocale(String langCode) {
+        // Save the selected language in SharedPreferences
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", langCode);  // Save the language code
+        editor.apply();  // Apply the changes
+
         // Set the locale for the app dynamically
         Locale locale = new Locale(langCode);
         Locale.setDefault(locale);
         android.content.res.Configuration config = getResources().getConfiguration();
         config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
-        // Save the selected language in SharedPreferences to persist language even after app restart
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", langCode);  // Save the language code
-        editor.apply();
+        // Apply the updated configuration
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
     // Load the saved language when the app restarts
@@ -70,10 +76,10 @@ public class languageSelect extends AppCompatActivity {
         setLocale(language);
     }
 
-    // Handle navigation based on the category
+    // Navigate to the next page based on the category
     private void navigateToNextPage() {
+        Intent intent = null;
         if (category != null) {
-            Intent intent = null;
             if (category.equals("Farmer")) {
                 intent = new Intent(languageSelect.this, Farmerregiter.class);
             } else if (category.equals("Labour")) {
@@ -85,11 +91,5 @@ public class languageSelect extends AppCompatActivity {
                 startActivity(intent);
             }
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadLocale(); // Load the saved language setting when the activity starts
     }
 }
