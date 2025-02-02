@@ -28,50 +28,43 @@ public class labourlist extends Fragment {
     SearchView svserch;
     RecyclerView rvlist;
     LabourREgistration labourREgistration;
-    Adpterlabour adpterlabour;
-
-    private UserAdapter adapter;
-    private List<User> userList;
-    ArrayList<String> id, name, number, address, age, adhrno, skill;
+    UserAdapter adapter;
+    List<User> userList, filteredList; // Original and filtered lists
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_labourlist, container, false);
 
         svserch = view.findViewById(R.id.searchView);
         rvlist = view.findViewById(R.id.recyclerView);
         userList = new ArrayList<>();
-        adapter = new UserAdapter(userList,getActivity());
+        filteredList = new ArrayList<>();
 
+        adapter = new UserAdapter(filteredList, getActivity()); // Set filtered list to adapter
         rvlist.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvlist.setAdapter(adapter);
 
-
-        // Initialize the lists
-        id = new ArrayList<>();
-        name = new ArrayList<>();
-        number = new ArrayList<>();
-        address = new ArrayList<>();
-        age = new ArrayList<>();
-        adhrno = new ArrayList<>();
-        skill = new ArrayList<>();
-
-        // Initialize the database helper class
         labourREgistration = new LabourREgistration(getActivity());
+        loadUserData(); // Load users from database
 
-        // Set up the RecyclerView
-//        rvlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+        svserch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false; // Not needed
+            }
 
-        // Initialize the adapter with the data
-//        adpterlabour = new Adpterlabour(id, name, number, address, age, adhrno, skill, getActivity());
-//        rvlist.setAdapter(adpterlabour);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
 
-        // Load the data from the database
+        return view;
+    }
 
-
-        // Set up SearchView to filter the list
+    private void loadUserData() {
         Cursor cursor = labourREgistration.getAllUsers();
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -89,20 +82,31 @@ public class labourlist extends Fragment {
             } while (cursor.moveToNext());
 
             cursor.close();
+            filteredList.addAll(userList); // Initially, show all users
             adapter.notifyDataSetChanged();
         } else {
             Toast.makeText(getActivity(), "No users found", Toast.LENGTH_SHORT).show();
         }
-
-
-        return view;
     }
+
+    private void filterList(String query) {
+        filteredList.clear();
+        if (query.isEmpty()) {
+            filteredList.addAll(userList);
+        } else {
+            for (User user : userList) {
+                if (user.getName().toLowerCase().contains(query.toLowerCase()) ||
+                        user.getMobile().contains(query)) {
+                    filteredList.add(user);
+                }
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         labourREgistration.close();
     }
-
-
-
 }
