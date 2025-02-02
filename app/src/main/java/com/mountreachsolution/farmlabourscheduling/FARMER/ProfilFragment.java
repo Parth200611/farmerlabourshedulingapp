@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.FarmerRegistration;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Imagedatabse;
@@ -37,7 +38,9 @@ import com.mountreachsolution.farmlabourscheduling.LoginActivity;
 import android.Manifest;
 import com.mountreachsolution.farmlabourscheduling.R;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -58,6 +61,11 @@ public class ProfilFragment extends Fragment {
     private Uri imageUri;
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int REQUEST_CODE_PICK_IMAGE = 1;
+
+    private SharedPreferences sharedPreferences1;
+    private static final String PREF_NAME = "MyPrefs";
+    private static final String IMAGE_URI_KEY = "image_uri";
+
 
 
     @Override
@@ -80,16 +88,17 @@ public class ProfilFragment extends Fragment {
         dbHelper = new Imagedatabse(getActivity());
         farmerRegistration = new FarmerRegistration(getActivity());
 
+        sharedPreferences1 = getActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        // Load saved image URI (if available)
+       loadImage();
+
         loaddata();
 
         ivedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                intent.setType("image/*");
-                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
-
+                openGallery();
 
             }
         });
@@ -97,37 +106,56 @@ public class ProfilFragment extends Fragment {
         // Logout button click
         btnlogout.setOnClickListener(v -> logoutUser());
 
-       getImage();
+
         return view;
     }
 
-    private void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-    private void getImage() {
-        String imageUriOrBase64 = dbHelper.getImageByNumber(number);
-        if (imageUriOrBase64 != null) {
-            try {
-
-                byte[] decodedString = Base64.decode(imageUriOrBase64, Base64.DEFAULT);
-                Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-
-
-                Glide.with(this)
-                        .load(decodedBitmap)
-                        .into(imageView);
-            } catch (Exception e) {
-
-                Glide.with(this)
-                        .load(imageUriOrBase64)
-                        .into(imageView);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            if (selectedImageUri != null) {
+                String imagePath = saveImageToInternalStorage(selectedImageUri);
+                if (imagePath != null) {
+                    SharedPreferences.Editor editor = sharedPreferences1.edit();
+                    editor.putString(IMAGE_URI_KEY, imagePath);
+                    editor.apply();
+                    loadImage();
+                } else {
+                    Toast.makeText(getActivity(), "Failed to save image", Toast.LENGTH_SHORT).show();
+                }
             }
-        } else {
-            Toast.makeText(getActivity(), "Image not found!", Toast.LENGTH_SHORT).show();
         }
     }
+    private String saveImageToInternalStorage(Uri imageUri) {
+        try {
+            InputStream inputStream = getActivity().getContentResolver().openInputStream(imageUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            File directory = getActivity().getFilesDir();
+            File file = new File(directory, "profile_image.jpg");
+
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+
+            return file.getAbsolutePath();
+        } catch (Exception e) {
+            Log.e("ImagePicker", "Error saving image: " + e.getMessage());
+            return null;
+        }
+    }
+
+
 
 
 
@@ -177,21 +205,29 @@ public class ProfilFragment extends Fragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onResume() {
+        super.onResume();
+        loadImage(); // Reload image when returning to the activity
+    }
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            Uri imageUri = data.getData();
-            if (imageUri != null) {
-
-                imageView.setImageURI(imageUri);
- // Insert the image URI into the database
-                dbHelper.insertImagePath(number, imageUri.toString());
-                Toast.makeText(getActivity(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show();
+    private void loadImage() {
+        String savedImagePath = sharedPreferences1.getString(IMAGE_URI_KEY, null);
+        if (savedImagePath != null) {
+            File imgFile = new File(savedImagePath);
+            if (imgFile.exists()) {
+                Glide.with(this)
+                        .load(imgFile)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imageView);
+                Log.d("ImagePicker", "Image loaded from internal storage: " + savedImagePath);
             } else {
-                Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
+                Log.e("ImagePicker", "Saved image file not found");
             }
+        } else {
+            Log.d("ImagePicker", "No saved image path found in SharedPreferences");
         }
     }
+
+
 
 }
