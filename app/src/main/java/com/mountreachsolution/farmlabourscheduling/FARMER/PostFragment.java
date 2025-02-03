@@ -8,6 +8,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -31,9 +33,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Postwork;
 import com.mountreachsolution.farmlabourscheduling.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Calendar;
 
 
@@ -154,12 +161,7 @@ public class PostFragment extends Fragment {
 
 
         postwork = new Postwork(getContext());
-         btnaddimage.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Opengallerey();
-             }
-         });
+        
 
 
 
@@ -188,22 +190,99 @@ public class PostFragment extends Fragment {
             }
         });
 
+        btnaddimage.setOnClickListener(v -> openGallery());
+
 
 
         return view;
     }
 
-    private void Opengallerey() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            if (selectedImageUri != null) {
+                // Save the image for the specific user
+                String imagePath = saveImageToInternalStorage(selectedImageUri);
+                if (imagePath != null) {
+                    // Save image path with the mobile number as a unique key
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("workImages", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("image_uri_" + strworkname, imagePath);  // Save image with unique key based on mobile number
+                    editor.apply();
+                    loadImage();  // Reload the image to show the newly selected image
+                } else {
+                    Toast.makeText(getActivity(), "Failed to save image", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+
+    private String saveImageToInternalStorage(Uri imageUri) {
+        try {
+            InputStream inputStream = getActivity().getContentResolver().openInputStream(imageUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            // Save image to internal storage
+            File directory = getActivity().getFilesDir();
+            File file = new File(directory, "work_image_" + strworkname + ".jpg");  // Unique name for each user
+
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+
+            return file.getAbsolutePath();  // Return the path to the saved image
+        } catch (Exception e) {
+            Log.e("ImagePicker", "Error saving image: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private void loadImage() {
+        // Get the saved image path for the logged-in user
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("workImages", Context.MODE_PRIVATE);
+        String savedImagePath = sharedPreferences.getString("image_uri_" + strworkname, null);
+
+        if (savedImagePath != null) {
+            // Image exists, load it
+            File imgFile = new File(savedImagePath);
+            if (imgFile.exists()) {
+                Glide.with(this)
+                        .load(imgFile)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(ivwork);
+                Log.d("ImagePicker", "Image loaded from internal storage: " + savedImagePath);
+            }
+        } else {
+            // No image selected yet, set a placeholder or show nothing
+            Glide.with(this)
+                    .load(R.drawable.baseline_person_24)  // Replace with your placeholder image
+                    .into(ivwork);
+            Log.d("ImagePicker", "No saved image for user " + strworkname);
+        }
+    }
+
+
+
+
+
 
 
     private void executePostWorkMethod() {
         postwork.insertPostwork(strname,strmobileno,straddress,strworkname,cropname,strwages,imagepath,strstartimae,strendtime,strdate,strlabour);
         Toast.makeText(getActivity(), "Work Posted", Toast.LENGTH_SHORT).show();
         clearedittext();
-        
+
     }
 
     private void clearedittext() {

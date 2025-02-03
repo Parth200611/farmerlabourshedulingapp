@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,10 +22,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Postwork;
 import com.mountreachsolution.farmlabourscheduling.DATABASE.Workrequestdatabse;
 import com.mountreachsolution.farmlabourscheduling.FARMER.FarmerHomepage;
 import com.mountreachsolution.farmlabourscheduling.R;
+
+import java.io.File;
 
 public class WorkDetails extends AppCompatActivity {
     ImageView ivimage;
@@ -85,8 +89,33 @@ public class WorkDetails extends AppCompatActivity {
 
 
         fetchWorkPostingById(id);
-        //loadProfileImage();
 
+        
+
+    }
+
+    private void loadImage() {
+        // Get the saved image path for the logged-in user
+        SharedPreferences sharedPreferences = getSharedPreferences("workImages", Context.MODE_PRIVATE);
+        String savedImagePath = sharedPreferences.getString("image_uri_" + work, null);
+
+        if (savedImagePath != null) {
+            // Image exists, load it
+            File imgFile = new File(savedImagePath);
+            if (imgFile.exists()) {
+                Glide.with(this)
+                        .load(imgFile)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(ivimage);
+                Log.d("ImagePicker", "Image loaded from internal storage: " + savedImagePath);
+            }
+        } else {
+            // No image selected yet, set a placeholder or show nothing
+            Glide.with(this)
+                    .load(R.drawable.baseline_person_24)  // Replace with your placeholder image
+                    .into(ivimage);
+            Log.d("ImagePicker", "No saved image for user " + ivimage);
+        }
     }
 
 
@@ -127,6 +156,7 @@ public class WorkDetails extends AppCompatActivity {
                 tvwork.setText(work);  tvcrop.setText(crop);  tvname.setText(name);  tvaddress.setText(address);
                 tvstarttime.setText(starttime);  tvendtime.setText(endtime);  tvwages.setText(wages);  tvlabour.setText(labour);
                 tvdate.setText(workdate);
+               loadImage();
 
 
                 cursor.close();
