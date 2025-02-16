@@ -18,6 +18,9 @@
         android:theme="@style/Theme.FarmLabourScheduling"
         tools:targetApi="31">
         <activity
+            android:name=".FARMER.updatePost"
+            android:exported="false" />
+        <activity
             android:name=".ADMIN.Labourdetails"
             android:exported="false" />
         <activity

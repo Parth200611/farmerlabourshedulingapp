@@ -116,6 +116,15 @@ public class Postwork extends SQLiteOpenHelper {
         db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{id});
         db.close();
     }
+    public void updateWagesAndLabour(String id, String newWages, String newLabourRequired) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_WAGES, newWages);
+        contentValues.put(COLUMN_LABOUR_REQUIRED, newLabourRequired);
+
+        db.update(TABLE_NAME, contentValues, COLUMN_ID + " = ?", new String[]{id});
+        db.close();
+    }
 
 
 

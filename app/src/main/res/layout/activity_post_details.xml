@@ -236,11 +236,24 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
         android:backgroundTint="@color/green"
         android:text="@string/remove_post"
         android:textColor="@color/white"
         android:id="@+id/btnremovepost"
+        />
+ <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8sp"
+     android:layout_marginStart="20sp"
+     android:layout_marginEnd="20sp"
+        android:backgroundTint="@color/green"
+        android:text="Update Task"
+        android:textColor="@color/white"
+        android:id="@+id/btnUpdate"
         />
 
 

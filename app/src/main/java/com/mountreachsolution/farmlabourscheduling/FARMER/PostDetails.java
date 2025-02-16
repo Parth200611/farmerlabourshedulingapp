@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -38,6 +39,7 @@ public class PostDetails extends AppCompatActivity {
 
     Workrequestdatabse workrequestdatabse;
     Postwork postwork;
+    AppCompatButton btnupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,16 @@ public class PostDetails extends AppCompatActivity {
         tvlabour=findViewById(R.id.tvlabourrequired);
         tvcrop=findViewById(R.id.tvcrop);
         btndelete=findViewById(R.id.btnremovepost);
+        btnupdate=findViewById(R.id.btnUpdate);
+
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PostDetails.this,updatePost.class);
+                i.putExtra("id",id);
+                startActivity(i);
+            }
+        });
 
         postwork=new Postwork(PostDetails.this);
         
