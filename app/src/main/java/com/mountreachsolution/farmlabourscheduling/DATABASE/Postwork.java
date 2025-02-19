@@ -125,6 +125,12 @@ public class Postwork extends SQLiteOpenHelper {
         db.update(TABLE_NAME, contentValues, COLUMN_ID + " = ?", new String[]{id});
         db.close();
     }
+    public void clearData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME);
+        db.execSQL("VACUUM"); // Reset auto-increment counter
+        db.close();
+    }
 
 
 

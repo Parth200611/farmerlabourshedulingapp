@@ -153,6 +153,11 @@ public class LabourREgistration extends SQLiteOpenHelper {
 
         return rowsAffected > 0;
     }
+    public void clearAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_USER); // Deletes all rows from the table
+        db.close();
+    }
 
 
 

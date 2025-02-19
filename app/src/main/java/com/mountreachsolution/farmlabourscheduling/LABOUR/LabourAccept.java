@@ -47,13 +47,14 @@ public class LabourAccept extends RecyclerView.Adapter<LabourAccept.ViewHolder> 
     public LabourAccept.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.requesttdesgin,parent,false);
         return new ViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull LabourAccept.ViewHolder holder, int position) {
         holder.tvworkname.setText(work.get(position));
-        holder.tvlabourname.setText(labourname.get(position));
-        holder.tvlabouraddress.setText(labouraddress.get(position));
+        holder.tvlabourname.setText(name.get(position));
+        holder.tvlabouraddress.setText(address.get(position));
         holder.tvstart.setText(starttime.get(position));
         holder.tvend.setText(endtime.get(position));
         holder.tvdate.setText(workdate.get(position));

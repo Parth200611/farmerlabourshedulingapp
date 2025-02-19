@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class LabourRegister extends AppCompatActivity {
     AppCompatButton btnRegister;
     String category;
     LabourREgistration labourREgistration;
+    CheckBox checkHarvesting, checkSeeding, checkWeeding, checkFertilization, checkPlanting, checkSpraying;
 
 
     int agel;
@@ -57,27 +59,16 @@ public class LabourRegister extends AppCompatActivity {
         etage = findViewById(R.id.etREgisterAge);
         etadharno = findViewById(R.id.etREgisterAdharnumber);
         etpassword = findViewById(R.id.etREgisterPassword);
+        checkHarvesting = findViewById(R.id.checkHarvesting);
+        checkSeeding = findViewById(R.id.checkSeeding);
+        checkWeeding = findViewById(R.id.checkWeeding);
+        checkFertilization = findViewById(R.id.checkFertilization);
+        checkPlanting = findViewById(R.id.checkPlanting);
+        checkSpraying = findViewById(R.id.checkSpraying);
 
-        Spinner spinnerSkill = findViewById(R.id.spinnerSkills);
 
 
-        String[] skillin = {"Harvesting", "Seeding", "Weeding", "Fertilization", "Planting", "Spraying"};
-        ArrayAdapter<String> workAdapter = new ArrayAdapter<>(LabourRegister.this, android.R.layout.simple_spinner_item, skillin);
-        workAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSkill.setAdapter(workAdapter);
 
-        spinnerSkill.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                skill= skillin[position];
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-
-            }
-        });
 
 
 
@@ -128,6 +119,22 @@ public class LabourRegister extends AppCompatActivity {
 
 
                     age = String.valueOf(Integer.parseInt(etage.getText().toString().trim()));
+
+
+                    StringBuilder selectedSkills = new StringBuilder();
+                    if (checkHarvesting.isChecked()) selectedSkills.append("Harvesting, ");
+                    if (checkSeeding.isChecked()) selectedSkills.append("Seeding, ");
+                    if (checkWeeding.isChecked()) selectedSkills.append("Weeding, ");
+                    if (checkFertilization.isChecked()) selectedSkills.append("Fertilization, ");
+                    if (checkPlanting.isChecked()) selectedSkills.append("Planting, ");
+                    if (checkSpraying.isChecked()) selectedSkills.append("Spraying, ");
+
+                    // Remove last comma and space
+                    if (selectedSkills.length() > 0) {
+                        selectedSkills.setLength(selectedSkills.length() - 2);
+                    }
+
+                    skill = selectedSkills.toString();
 
                     // Check if the mobile number already exists
                     if (labourREgistration.isUserExists(mobileno)) {

@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 import com.mountreachsolution.farmlabourscheduling.ADMIN.AdminHomepage;
+import com.mountreachsolution.farmlabourscheduling.DATABASE.FarmerRegistration;
+import com.mountreachsolution.farmlabourscheduling.DATABASE.LabourREgistration;
+import com.mountreachsolution.farmlabourscheduling.DATABASE.Postwork;
 import com.mountreachsolution.farmlabourscheduling.FARMER.FarmerHomepage;
 import com.mountreachsolution.farmlabourscheduling.LABOUR.LabourHomepage;
 
@@ -28,6 +31,18 @@ public class Splashactivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(Splashactivity.this,R.color.lightbrown));
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//
+//        FarmerRegistration db = new FarmerRegistration(this);
+//        db.clearAllData();
+//        LabourREgistration dQb = new LabourREgistration(this);
+//
+//        // Clear all user data
+//        dQb.clearAllData();
+//        Postwork dbHelper = new Postwork(this);
+//
+//        // Clear all postwork data
+//        dbHelper.clearData();
+
 
         // Make the app fullscreen by hiding the status bar and navigation bar
         getWindow().getDecorView().setSystemUiVisibility(

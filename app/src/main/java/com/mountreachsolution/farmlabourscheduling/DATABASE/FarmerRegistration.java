@@ -128,6 +128,12 @@ public class FarmerRegistration extends SQLiteOpenHelper {
         db.close();
         return result > 0;
     }
+    public void clearAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_USER);
+        db.close();
+    }
+
 
 
 }

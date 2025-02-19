@@ -157,10 +157,11 @@ public class HomeFragment extends Fragment {
         Cursor cursor = acceptedworkd.getRequest(monilenumber);
         // Change this to the actual farmer mobile number
 
-        if (cursor.getCount() == 0) {
+        if (cursor == null || cursor.getCount() == 0) {  // Added null check
             rvlist.setVisibility(View.GONE);
             tvNorequest.setVisibility(View.VISIBLE);
-        } else {
+            return; }
+        else {
             while (cursor.moveToNext()) {
                 id1.add(cursor.getString(0));
                 name1.add(cursor.getString(1));

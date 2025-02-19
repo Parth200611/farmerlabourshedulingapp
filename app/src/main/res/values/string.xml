@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="work_schedul">Work Schedul</string><string name="app_name">Farmer</string>
+    <string name="work_schedul">Work Schedul</string><string name="app_name" translatable="false">Farmer Labour Scheduling </string>
     <string name="search_by_work_crop_wages_date">Search by work,crop,wages,date</string>
     <string name="welcome_to_farm_labour_scheduling">Welcome to Farm Labour Scheduling</string>
     <string name="age">Age:</string>
